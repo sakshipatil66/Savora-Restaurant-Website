@@ -1,0 +1,602 @@
+@import "tailwindcss";
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * SAVORA Design System
+ * Premium fine-dining theme:
+ * warm cream, charcoal and muted gold.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-gold: var(--gold);
+  --color-charcoal: var(--charcoal);
+  --color-cream: var(--cream);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 2px;
+
+  --background: oklch(0.972 0.008 84);
+  --foreground: oklch(0.235 0.008 60);
+
+  --card: oklch(0.988 0.005 84);
+  --card-foreground: oklch(0.235 0.008 60);
+
+  --popover: oklch(0.988 0.005 84);
+  --popover-foreground: oklch(0.235 0.008 60);
+
+  --primary: oklch(0.215 0.008 60);
+  --primary-foreground: oklch(0.972 0.008 84);
+
+  --secondary: oklch(0.94 0.01 84);
+  --secondary-foreground: oklch(0.235 0.008 60);
+
+  --muted: oklch(0.94 0.01 84);
+  --muted-foreground: oklch(0.44 0.014 70);
+
+  --accent: oklch(0.64 0.098 78);
+  --accent-foreground: oklch(0.16 0.006 60);
+
+  --gold: oklch(0.64 0.098 78);
+  --charcoal: oklch(0.19 0.006 60);
+  --cream: oklch(0.972 0.008 84);
+
+  --destructive: oklch(0.52 0.17 27);
+  --destructive-foreground: oklch(0.98 0.005 84);
+
+  --border: oklch(0.885 0.012 80);
+  --input: oklch(0.885 0.012 80);
+  --ring: oklch(0.64 0.098 78);
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  img,
+  video {
+    display: block;
+    max-width: 100%;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+/* =========================================================
+   PREMIUM EYEBROW
+   ========================================================= */
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  line-height: 1.5;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+/* =========================================================
+   SCROLL REVEAL
+   ========================================================= */
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(18px);
+
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+
+  &[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* =========================================================
+   GOLD DIVIDER
+   ========================================================= */
+
+@utility hairline {
+  width: 3.5rem;
+  height: 1px;
+  background-color: var(--color-gold);
+}
+
+/* =========================================================
+   MENU CARD ANIMATION
+   ========================================================= */
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility menu-card {
+  animation: menu-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* =========================================================
+   IMAGE ZOOM
+   ========================================================= */
+
+@utility image-zoom {
+  overflow: hidden;
+
+  img {
+    transition:
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  &:hover img {
+    transform: scale(1.04);
+  }
+}
+
+/* =========================================================
+   LUXURY CARD
+   ========================================================= */
+
+@utility luxury-card {
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* =========================================================
+   KEYBOARD ACCESSIBILITY
+   ========================================================= */
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 639px) {
+  .eyebrow {
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+  }
+
+  h1 {
+    letter-spacing: -0.015em;
+  }
+
+  h2 {
+    letter-spacing: -0.01em;
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .menu-card {
+    animation: none;
+  }
+
+  .image-zoom img,
+  .luxury-card {
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+/* =========================================
+   SAVORA CARD HOVER ANIMATIONS
+   ========================================= */
+
+.card-animate {
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+  will-change: transform;
+}
+
+.card-animate:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+}
+
+/* Image zoom inside cards */
+.card-animate img {
+  transition: transform 0.6s ease;
+}
+
+.card-animate:hover img {
+  transform: scale(1.05);
+}
+
+/* Optional gold border effect */
+.card-animate:hover {
+  border-color: rgba(190, 155, 85, 0.45);
+}
+
+/* Mobile - avoid aggressive hover movement */
+@media (max-width: 768px) {
+  .card-animate:hover {
+    transform: translateY(-4px);
+  }
+
+  .card-animate:hover img {
+    transform: scale(1.02);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .card-animate,
+  .card-animate img {
+    transition: none;
+  }
+
+  .card-animate:hover,
+  .card-animate:hover img {
+    transform: none;
+  }
+}
+/* =========================================
+   SAVORA FADE + SLIDE-UP ANIMATION
+   ========================================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.reveal[data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+/* =========================================
+   SAVORA BUTTON HOVER ANIMATION
+   ========================================= */
+
+button,
+a {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+button:hover,
+a:hover {
+  transform: translateY(-2px);
+}
+
+/* Avoid lifting navigation/layout links */
+nav a:hover {
+  transform: none;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  button,
+  a {
+    transition: none;
+  }
+
+  button:hover,
+  a:hover {
+    transform: none;
+  }
+}
+/* =========================================
+   SAVORA HERO TEXT ANIMATION
+   ========================================= */
+
+.hero-eyebrow {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: hero-fade-up 0.7s ease-out 0.15s forwards;
+}
+
+.hero-title {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: hero-fade-up 0.9s ease-out 0.3s forwards;
+}
+
+.hero-description {
+  opacity: 0;
+  transform: translateY(22px);
+  animation: hero-fade-up 0.8s ease-out 0.55s forwards;
+}
+
+.hero-line {
+  width: 0;
+  animation: hero-line-expand 0.7s ease-out 0.9s forwards;
+}
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-line-expand {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+
+  to {
+    width: 4rem;
+    opacity: 1;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .hero-title {
+    animation-duration: 0.8s;
+  }
+
+  .hero-description {
+    animation-delay: 0.5s;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hero-eyebrow,
+  .hero-title,
+  .hero-description,
+  .hero-line {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-line {
+    width: 4rem;
+  }
+}
+/* =========================================
+   SAVORA TESTIMONIAL SLIDER ANIMATION
+   ========================================= */
+
+.testimonial-slide {
+  animation: testimonial-slide-in 0.6s ease-out;
+}
+
+@keyframes testimonial-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .testimonial-slide {
+    animation-duration: 0.5s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-slide {
+    animation: none;
+  }
+}
+/* =========================================
+   SAVORA GALLERY ANIMATION
+   ========================================= */
+
+.gallery-item {
+  opacity: 0;
+  animation: savora-gallery-reveal 0.7s ease-out forwards;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
+}
+
+.gallery-lightbox {
+  animation: savora-gallery-lightbox 0.3s ease-out;
+}
+
+@keyframes savora-gallery-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes savora-gallery-lightbox {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-item:hover {
+    transform: translateY(-3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-item,
+  .gallery-lightbox {
+    animation: none;
+    opacity: 1;
+  }
+
+  .gallery-item:hover {
+    transform: none;
+  }
+}
