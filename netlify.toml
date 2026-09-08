@@ -1,11 +1,6 @@
 [build]
   command = "npm run build"
-  publish = ".output/public"
+  publish = ".output"
 
 [build.environment]
   NODE_VERSION = "20"
-
-[[redirects]]
-  from = "/*"
-  to = "/"
-  status = 200
