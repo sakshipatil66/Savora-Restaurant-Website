@@ -1,3 +1,4 @@
+
 import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowLeft,
@@ -8,7 +9,7 @@ import {
   Sparkles,
   Users,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { ButtonLink } from "@/components/Button";
 import { CTASection } from "@/components/CTASection";
@@ -80,6 +81,35 @@ const pillars = [
 ];
 
 function HomePage() {
+  /* =========================================
+      HERO SLIDER
+      ========================================= */
+
+  const heroImages = [
+    images.hero,
+    images.diningRoom,
+    images.privateRoom,
+    images.kitchen,
+  ];
+
+  const [heroIndex, setHeroIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHeroIndex((current) =>
+        current === heroImages.length - 1
+          ? 0
+          : current + 1,
+      );
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
+
+  /* =========================================
+      TESTIMONIAL SLIDER
+      ========================================= */
+
   const [testimonialIndex, setTestimonialIndex] =
     useState(0);
 
@@ -114,12 +144,15 @@ function HomePage() {
           HERO
           ========================================= */}
       <section className="group relative flex min-h-[94svh] items-center overflow-hidden bg-charcoal">
+
+        {/* Hero Slider Image */}
         <img
-          src={images.hero}
-          alt="The candlelit SAVORA dining room at night"
+          key={heroIndex}
+          src={heroImages[heroIndex]}
+          alt="SAVORA dining experience"
           width={1920}
           height={1280}
-          className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[1800ms] ease-out group-hover:scale-[1.03]"
+          className="absolute inset-0 h-full w-full object-cover object-center transition-all duration-1000 ease-in-out group-hover:scale-[1.03]"
         />
 
         <div className="absolute inset-0 bg-gradient-to-r from-charcoal/85 via-charcoal/60 to-charcoal/35" />
@@ -179,6 +212,63 @@ function HomePage() {
           </Reveal>
         </div>
 
+        {/* Hero Slider Controls */}
+        <div className="absolute bottom-8 right-5 z-20 flex items-center gap-3 sm:right-8">
+
+          {/* Previous */}
+          <button
+            type="button"
+            onClick={() =>
+              setHeroIndex((current) =>
+                current === 0
+                  ? heroImages.length - 1
+                  : current - 1,
+              )
+            }
+            aria-label="Previous hero image"
+            className="flex h-10 w-10 items-center justify-center border border-cream/30 bg-charcoal/30 text-cream backdrop-blur-sm transition-all duration-300 hover:border-gold hover:bg-gold hover:text-charcoal"
+          >
+            <ArrowLeft size={16} />
+          </button>
+
+          {/* Dots */}
+          <div className="flex items-center gap-2">
+            {heroImages.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                onClick={() => setHeroIndex(index)}
+                aria-label={`Show hero image ${index + 1}`}
+                aria-current={
+                  index === heroIndex
+                }
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  index === heroIndex
+                    ? "w-7 bg-gold"
+                    : "w-2 bg-cream/50 hover:bg-cream"
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Next */}
+          <button
+            type="button"
+            onClick={() =>
+              setHeroIndex((current) =>
+                current === heroImages.length - 1
+                  ? 0
+                  : current + 1,
+              )
+            }
+            aria-label="Next hero image"
+            className="flex h-10 w-10 items-center justify-center border border-cream/30 bg-charcoal/30 text-cream backdrop-blur-sm transition-all duration-300 hover:border-gold hover:bg-gold hover:text-charcoal"
+          >
+            <ArrowRight size={16} />
+          </button>
+        </div>
+
+        {/* Discover */}
         <div className="absolute inset-x-0 bottom-8 flex justify-center">
           <div className="flex flex-col items-center gap-2 text-[0.55rem] uppercase tracking-[0.3em] text-cream/50">
             <span>Discover</span>
@@ -277,7 +367,7 @@ function HomePage() {
             {signatureDishes.map((dish, i) => (
               <div
                 key={dish.name}
-                className="card-animate"
+                className="card-animate rounded-sm transition-all duration-500 hover:-translate-y-3 hover:scale-[1.02] hover:shadow-2xl"
               >
                 <DishCard
                   dish={dish}
@@ -365,7 +455,6 @@ function HomePage() {
           />
 
           <div className="relative mt-16">
-            {/* Current Testimonial */}
             <div
               key={`${currentTestimonial.name}-${testimonialIndex}`}
               className="testimonial-slide card-animate mx-auto max-w-3xl"
@@ -376,10 +465,8 @@ function HomePage() {
               />
             </div>
 
-            {/* Slider Controls */}
             {totalTestimonials > 1 ? (
               <div className="mt-8 flex items-center justify-center gap-4">
-                {/* Previous */}
                 <button
                   type="button"
                   onClick={previousTestimonial}
@@ -389,7 +476,6 @@ function HomePage() {
                   <ArrowLeft size={17} />
                 </button>
 
-                {/* Dots */}
                 <div className="flex items-center gap-2">
                   {testimonials.map(
                     (testimonial, index) => (
@@ -413,7 +499,6 @@ function HomePage() {
                   )}
                 </div>
 
-                {/* Next */}
                 <button
                   type="button"
                   onClick={nextTestimonial}
@@ -425,7 +510,6 @@ function HomePage() {
               </div>
             ) : null}
 
-            {/* Counter */}
             {totalTestimonials > 1 ? (
               <p className="mt-5 text-center text-[0.62rem] uppercase tracking-[0.2em] text-muted-foreground">
                 {testimonialIndex + 1} /{" "}
@@ -458,11 +542,10 @@ function HomePage() {
             </p>
 
             <h2 className="mt-5 font-display text-4xl leading-tight text-cream sm:text-5xl lg:text-6xl">
-              Good food.
+              Good food. Good company.
               <span className="block italic text-gold">
-                Good company.
+                Great memories.
               </span>
-              Great memories.
             </h2>
 
             <p className="mx-auto mt-7 max-w-2xl text-sm leading-8 text-cream/65 sm:text-base">

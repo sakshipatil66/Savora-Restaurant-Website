@@ -1,4 +1,3 @@
-
 import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -242,14 +241,14 @@ function MenuPage() {
                     </div>
 
                     {/* =================================================
-                        ANIMATED MENU CARDS
+                        MENU CARDS — HOVER SPACE / EFFECT
                     ================================================= */}
-                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                       {section.items.map(
                         (item, index) => (
                           <div
                             key={item.name}
-                            className="card-animate"
+                            className="card-animate rounded-sm transition-all duration-500 ease-out hover:-translate-y-3 hover:scale-[1.02] hover:shadow-2xl"
                           >
                             <MenuItem
                               item={item}
@@ -478,4 +477,3 @@ function MenuPage() {
     </Layout>
   );
 }
-
