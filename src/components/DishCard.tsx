@@ -34,17 +34,15 @@ export function DishCard({
         duration-700
         ease-[cubic-bezier(0.22,1,0.36,1)]
 
-        /* Desktop */
+        /* Desktop hover */
         hover:-translate-y-5
         hover:scale-[1.025]
         hover:border-[#c9a45c]
         hover:shadow-[0_30px_65px_rgba(45,35,20,0.30)]
 
-        /* Mobile / Touch */
-        active:-translate-y-2
-        active:scale-[1.015]
+        /* Touch */
+        active:scale-[0.99]
         active:border-[#c9a45c]
-        active:shadow-[0_20px_45px_rgba(45,35,20,0.28)]
       "
     >
       {/* IMAGE */}
@@ -59,7 +57,7 @@ export function DishCard({
             aspect-[4/3]
             w-full
             object-cover
-            transition-all
+            transition-transform
             duration-1000
             ease-[cubic-bezier(0.22,1,0.36,1)]
 
@@ -68,6 +66,7 @@ export function DishCard({
           "
         />
 
+        {/* IMAGE OVERLAY */}
         <div
           className="
             absolute
@@ -77,11 +76,11 @@ export function DishCard({
             via-black/20
             to-transparent
             opacity-60
-            transition-all
+            transition-opacity
             duration-700
 
             group-hover:opacity-90
-            group-active:opacity-85
+            group-active:opacity-80
           "
         />
 
@@ -89,15 +88,15 @@ export function DishCard({
         <div
           className="
             absolute
-            right-4
-            top-4
+            right-3
+            top-3
             rounded-full
             border
             border-[#d6ad63]
             bg-[#c9a45c]
-            px-4
-            py-2
-            text-sm
+            px-3
+            py-1.5
+            text-xs
             font-semibold
             tracking-wide
             text-white
@@ -105,15 +104,16 @@ export function DishCard({
             transition-all
             duration-500
 
+            sm:right-4
+            sm:top-4
+            sm:px-4
+            sm:py-2
+            sm:text-sm
+
             group-hover:-translate-y-1
             group-hover:scale-110
             group-hover:bg-[#fffdf8]
             group-hover:text-[#8c6427]
-
-            group-active:-translate-y-1
-            group-active:scale-105
-            group-active:bg-[#fffdf8]
-            group-active:text-[#8c6427]
           "
         >
           {dish.price}
@@ -125,23 +125,28 @@ export function DishCard({
           aria-label={`Explore ${dish.name}`}
           className="
             absolute
-            bottom-5
-            right-5
+            bottom-4
+            right-4
             flex
-            h-12
-            w-12
+            h-11
+            w-11
             items-center
             justify-center
             rounded-full
             bg-[#c9a45c]
             text-white
             opacity-0
-            translate-y-5
+            translate-y-3
             scale-75
             shadow-xl
             transition-all
             duration-500
             ease-out
+
+            sm:bottom-5
+            sm:right-5
+            sm:h-12
+            sm:w-12
 
             group-hover:translate-y-0
             group-hover:scale-100
@@ -180,7 +185,6 @@ export function DishCard({
             duration-1000
 
             group-hover:left-[140%]
-            group-active:left-[140%]
           "
         />
       </div>
@@ -190,37 +194,43 @@ export function DishCard({
         className="
           relative
           bg-[#211b15]
-          px-6
-          py-7
-          transition-all
+          px-5
+          py-6
+          transition-colors
           duration-500
 
+          sm:px-6
+          sm:py-7
+
           group-hover:bg-[#2b221a]
-          group-active:bg-[#2b221a]
         "
       >
+        {/* GOLD LINE */}
         <div
           className="
             absolute
-            left-6
+            left-5
             top-0
             h-[3px]
-            w-0
+            w-8
             rounded-full
             bg-[#c9a45c]
             transition-all
             duration-700
             ease-out
 
+            sm:left-6
+            sm:w-0
+
             group-hover:w-20
-            group-active:w-16
           "
         />
 
+        {/* TITLE */}
         <h3
           className="
             font-display
-            text-xl
+            text-lg
             font-semibold
             leading-tight
             text-[#fff8ec]
@@ -228,20 +238,29 @@ export function DishCard({
             duration-500
             ease-out
 
+            sm:text-xl
+
             group-hover:translate-x-2
             group-hover:text-[#d6ad63]
-
-            group-active:translate-x-1
-            group-active:text-[#d6ad63]
           "
         >
           {dish.name}
         </h3>
 
-        <p className="mt-3 line-clamp-2 text-sm leading-6 text-[#c8bca9]">
+        {/* DESCRIPTION */}
+        <p
+          className="
+            mt-3
+            line-clamp-2
+            text-sm
+            leading-6
+            text-[#c8bca9]
+          "
+        >
           {dish.description}
         </p>
 
+        {/* FOOTER */}
         <div className="mt-5 flex items-center gap-2">
           <span
             className="
@@ -252,11 +271,18 @@ export function DishCard({
               duration-500
 
               group-hover:w-12
-              group-active:w-10
             "
           />
 
-          <span className="text-[10px] font-medium uppercase tracking-[0.25em] text-[#c9a45c]">
+          <span
+            className="
+              text-[10px]
+              font-medium
+              uppercase
+              tracking-[0.25em]
+              text-[#c9a45c]
+            "
+          >
             SAVORA
           </span>
         </div>
@@ -264,4 +290,3 @@ export function DishCard({
     </Reveal>
   );
 }
-

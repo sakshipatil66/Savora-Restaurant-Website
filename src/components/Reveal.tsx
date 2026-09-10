@@ -1,18 +1,21 @@
+
 import type { ReactNode } from "react";
 import { useReveal } from "@/hooks/use-reveal";
 import { cn } from "@/lib/utils";
+
+type RevealProps = {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+  as?: "div" | "section" | "li" | "article";
+};
 
 export function Reveal({
   children,
   className,
   delay = 0,
   as: Tag = "div",
-}: {
-  children: ReactNode;
-  className?: string;
-  delay?: number;
-  as?: "div" | "section" | "li" | "article";
-}) {
+}: RevealProps) {
   const { ref, visible } = useReveal<HTMLDivElement>();
 
   return (
@@ -25,7 +28,7 @@ export function Reveal({
       className={cn(
         "reveal",
         "will-change-transform",
-        className,
+        className
       )}
     >
       {children}
