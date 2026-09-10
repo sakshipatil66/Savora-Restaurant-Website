@@ -1,479 +1,213 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useMemo, useState } from "react";
+
 import {
   ArrowRight,
-  Download,
-  Leaf,
-  Sparkles,
-  UtensilsCrossed,
+  Utensils,
 } from "lucide-react";
-import { useState } from "react";
 
-import { CTASection } from "@/components/CTASection";
+import { ButtonLink } from "../components/ButtonLink";
 import { Layout } from "@/components/Layout";
 import { MenuItem } from "@/components/MenuItem";
-import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
+import { SectionTitle } from "@/components/SectionTitle";
+
 import { images, menu } from "@/data/site";
-import { cn } from "@/lib/utils";
-
-export const Route = createFileRoute("/menu")({
-  head: () => ({
-    meta: [
-      {
-        title: "Menu — SAVORA Fine Dining",
-      },
-      {
-        name: "description",
-        content:
-          "Explore the SAVORA menu featuring refined starters, soups and salads, main courses, pasta, desserts and beverages.",
-      },
-      {
-        property: "og:title",
-        content: "Menu — SAVORA Fine Dining",
-      },
-      {
-        property: "og:description",
-        content:
-          "Discover seasonal ingredients, elegant presentation and contemporary fine dining at SAVORA.",
-      },
-    ],
-  }),
-
-  component: MenuPage,
-});
-
-const FILTERS = [
-  "All",
-  ...menu.map((item) => item.category),
-];
 
 function MenuPage() {
-  const [active, setActive] = useState("All");
+  const [activeFilter, setActiveFilter] = useState("All");
 
-  const sections =
-    active === "All"
-      ? menu
-      : menu.filter(
-          (section) => section.category === active,
-        );
+  const FILTERS = [
+    "All",
+    ...menu.map((group) => group.category),
+  ];
+
+  const filteredMenu = useMemo(() => {
+    const allItems = menu.flatMap((group) => group.items);
+
+    if (activeFilter === "All") {
+      return allItems;
+    }
+
+    const selectedGroup = menu.find(
+      (group) => group.category === activeFilter,
+    );
+
+    return selectedGroup?.items ?? [];
+  }, [activeFilter]);
 
   return (
     <Layout>
-      {/* =========================================================
-          HERO
-      ========================================================= */}
-      <PageHero
-        eyebrow="SAVORA · THE MENU"
-        title="A Table Set for Every Season"
-        description="Discover thoughtfully crafted dishes inspired by seasonal ingredients, contemporary technique and the art of fine dining."
-        image={images.pasta}
-      />
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-[#211b15] px-6 py-32 sm:py-40">
+        <img
+          src={images.kitchen}
+          alt="SAVORA menu"
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="eager"
+        />
 
-      {/* =========================================================
-          INTRODUCTION
-      ========================================================= */}
-      <section className="relative overflow-hidden bg-background py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-            <Reveal>
-              <div className="card-animate relative">
-                <div className="absolute -left-4 -top-4 h-20 w-20 border-l border-t border-gold/50 sm:-left-7 sm:-top-7" />
+        <div className="absolute inset-0 bg-black/65" />
 
-                <div className="relative overflow-hidden">
-                  <img
-                    src={images.ingredients}
-                    alt="Fresh seasonal ingredients at SAVORA"
-                    className="aspect-[4/5] w-full object-cover shadow-[0_25px_70px_-35px_rgba(0,0,0,0.45)]"
-                  />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/55 to-[#211b15]/90" />
 
-                  <div className="absolute -bottom-5 -right-4 hidden bg-card px-6 py-5 shadow-xl sm:block">
-                    <div className="flex items-center gap-3">
-                      <Sparkles
-                        size={17}
-                        className="text-gold"
-                      />
+        <div className="relative z-10 mx-auto max-w-5xl text-center text-white">
+          <Reveal>
+            <p className="text-xs font-medium uppercase tracking-[0.35em] text-[#d6ad63] sm:text-sm">
+              SAVORA
+            </p>
 
-                      <div>
-                        <p className="font-display text-lg text-foreground">
-                          Crafted Daily
-                        </p>
+            <h1 className="mt-5 font-display text-5xl font-semibold sm:text-7xl">
+              Our Menu
+            </h1>
 
-                        <p className="mt-1 text-[0.62rem] uppercase tracking-[0.16em] text-muted-foreground">
-                          Seasonal · Thoughtful · Refined
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-white/80 sm:text-lg">
+              Explore thoughtfully crafted dishes prepared with
+              fresh ingredients, bold flavours and a contemporary
+              approach.
+            </p>
+          </Reveal>
+        </div>
+      </section>
 
-            <Reveal delay={120}>
-              <div className="max-w-xl">
-                <p className="text-[0.65rem] font-medium uppercase tracking-[0.28em] text-gold">
-                  The SAVORA Philosophy
-                </p>
+      {/* INTRO */}
+      <section className="bg-[#f7f4ee] px-6 py-24 sm:py-32">
+        <div className="mx-auto max-w-4xl text-center">
+          <Reveal>
+            <SectionTitle
+              eyebrow="Taste SAVORA"
+              title="Made For Every Occasion"
+              description="From comforting favourites to signature creations, our menu is designed to bring people together around great food."
+              align="center"
+            />
+          </Reveal>
+        </div>
+      </section>
 
-                <h2 className="mt-5 font-display text-4xl leading-[1.08] text-foreground sm:text-5xl lg:text-6xl">
-                  An Experience
-                  <br />
-                  Worth Savoring
-                </h2>
+      {/* MENU */}
+      <section className="bg-[#fffdf8] px-6 py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl">
+          <Reveal>
+            <div className="flex items-center justify-center gap-3">
+              <Utensils
+                size={20}
+                className="text-[#c9a45c]"
+              />
 
-                <div className="hairline mt-7 w-20" />
+              <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#8c6427]">
+                Explore Our Selection
+              </p>
+            </div>
+          </Reveal>
 
-                <p className="mt-7 text-base leading-8 text-muted-foreground">
-                  Every plate at SAVORA begins with carefully
-                  selected ingredients and ends with a moment
-                  worth remembering. Our menu brings together
-                  familiar flavors, contemporary techniques and
-                  elegant presentation.
-                </p>
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
+            {FILTERS.map((filter) => (
+              <button
+                key={filter}
+                type="button"
+                onClick={() => setActiveFilter(filter)}
+                className={`rounded-full border px-5 py-2.5 text-sm font-medium transition-all duration-300 ${
+                  activeFilter === filter
+                    ? "border-[#c9a45c] bg-[#c9a45c] text-white shadow-md"
+                    : "border-[#c9a45c]/40 bg-white text-[#756b5e] hover:-translate-y-1 hover:border-[#c9a45c] hover:text-[#8c6427]"
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
 
-                <p className="mt-5 text-base leading-8 text-muted-foreground">
-                  From delicate starters to indulgent desserts,
-                  each dish is designed to complement the rhythm
-                  of the season and the atmosphere of the table.
-                </p>
-
-                <div className="mt-8 flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-foreground/70">
-                  <UtensilsCrossed
-                    size={15}
-                    className="text-gold"
-                  />
-
-                  <span>
-                    Seasonal ingredients · Crafted with care
-                  </span>
-                </div>
-              </div>
-            </Reveal>
+          <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredMenu.map((item, index) => (
+              <MenuItem
+                key={`${item.name}-${index}`}
+                item={item}
+                delay={index * 80}
+              />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* =========================================================
-          MENU FILTER + MENU
-      ========================================================= */}
-      <section className="bg-secondary/30 py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          {/* Section heading */}
+      {/* SAVORA EXPERIENCE */}
+      <section className="bg-[#211b15] px-6 py-24 sm:py-32">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
           <Reveal>
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="text-[0.65rem] font-medium uppercase tracking-[0.28em] text-gold">
-                Explore the Menu
+            <div className="overflow-hidden rounded-2xl">
+              <img
+                src={images.privateRoom}
+                alt="SAVORA private dining experience"
+                className="h-full min-h-[420px] w-full object-cover transition-transform duration-1000 hover:scale-105"
+              />
+            </div>
+          </Reveal>
+
+          <Reveal delay={150}>
+            <div className="text-white">
+              <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#d6ad63]">
+                The Experience
               </p>
 
-              <h2 className="mt-4 font-display text-4xl text-foreground sm:text-5xl">
-                Something for Every Palate
+              <h2 className="mt-5 font-display text-4xl font-semibold leading-tight sm:text-5xl">
+                Dining Designed
+                <br />
+                <span className="text-[#d6ad63]">
+                  Around You
+                </span>
               </h2>
 
-              <p className="mt-5 text-sm leading-7 text-muted-foreground sm:text-base">
-                Explore our carefully curated selection of
-                dishes, from elegant starters and comforting
-                mains to handcrafted pasta and indulgent
-                desserts.
+              <p className="mt-6 leading-8 text-white/70">
+                Whether you're joining us for a casual dinner,
+                celebrating something special or enjoying an
+                intimate evening, SAVORA creates an atmosphere
+                where every moment feels meaningful.
               </p>
-            </div>
-          </Reveal>
 
-          {/* Filter */}
-          <Reveal delay={100}>
-            <div className="mt-12 flex justify-center">
-              <div className="-mx-5 w-full overflow-x-auto px-5 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:w-auto sm:px-0">
-                <div className="flex w-max gap-2 sm:flex-wrap sm:justify-center">
-                  {FILTERS.map((filter) => {
-                    const isActive = active === filter;
-
-                    return (
-                      <button
-                        key={filter}
-                        type="button"
-                        onClick={() => setActive(filter)}
-                        aria-pressed={isActive}
-                        className={cn(
-                          "group relative shrink-0 border px-5 py-3 text-[0.63rem] font-medium uppercase tracking-[0.2em] transition-all duration-300",
-                          isActive
-                            ? "border-charcoal bg-charcoal text-white shadow-lg"
-                            : "border-border bg-background text-foreground/65 hover:-translate-y-0.5 hover:border-gold hover:text-gold",
-                        )}
-                      >
-                        {filter}
-
-                        {isActive && (
-                          <span className="absolute -bottom-px left-1/2 h-0.5 w-8 -translate-x-1/2 bg-gold" />
-                        )}
-                      </button>
-                    );
-                  })}
-                </div>
+              <div className="mt-8">
+                <ButtonLink to="/experience">
+                  Discover The Experience
+                  <ArrowRight size={18} />
+                </ButtonLink>
               </div>
             </div>
           </Reveal>
+        </div>
+      </section>
 
-          {/* Menu sections */}
-          <div
-            key={active}
-            className="mt-16 space-y-20 sm:mt-20 sm:space-y-24"
-          >
-            {sections.map(
-              (section, sectionIndex) => (
-                <Reveal
-                  key={section.category}
-                  delay={sectionIndex * 60}
-                >
-                  <div>
-                    {/* Category heading */}
-                    <div className="mb-10 flex items-center gap-5">
-                      <div className="hidden h-px flex-1 bg-border sm:block" />
+      {/* FINAL CTA */}
+      <section className="relative overflow-hidden bg-[#f7f4ee] px-6 py-24 sm:py-32">
+        <div className="relative z-10 mx-auto max-w-4xl text-center">
+          <Reveal>
+            <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#8c6427]">
+              Your Next Experience
+            </p>
 
-                      <div className="text-center">
-                        <p className="mb-2 text-[0.6rem] uppercase tracking-[0.28em] text-gold">
-                          SAVORA
-                        </p>
+            <h2 className="mt-5 font-display text-4xl font-semibold text-[#2b241c] sm:text-6xl">
+              Come Hungry.
+              <br />
+              <span className="text-[#9b712f]">
+                Leave With Memories.
+              </span>
+            </h2>
 
-                        <h2 className="font-display text-3xl text-foreground sm:text-4xl">
-                          {section.category}
-                        </h2>
-                      </div>
+            <p className="mx-auto mt-6 max-w-2xl leading-7 text-[#756b5e]">
+              Reserve your table and experience the flavours,
+              atmosphere and hospitality of SAVORA.
+            </p>
 
-                      <div className="hidden h-px flex-1 bg-border sm:block" />
-                    </div>
-
-                    {/* =================================================
-                        MENU CARDS — HOVER SPACE / EFFECT
-                    ================================================= */}
-                    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                      {section.items.map(
-                        (item, index) => (
-                          <div
-                            key={item.name}
-                            className="card-animate rounded-sm transition-all duration-500 ease-out hover:-translate-y-3 hover:scale-[1.02] hover:shadow-2xl"
-                          >
-                            <MenuItem
-                              item={item}
-                              delay={index * 70}
-                            />
-                          </div>
-                        ),
-                      )}
-                    </div>
-                  </div>
-                </Reveal>
-              ),
-            )}
-          </div>
-
-          {/* =====================================================
-              VEGETARIAN + DOWNLOAD
-          ===================================================== */}
-          <Reveal delay={150}>
-            <div className="mt-20 flex flex-col items-center justify-center gap-6 border-t border-border pt-10 sm:flex-row sm:justify-between">
-              <div className="flex items-center gap-3">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full border border-gold/40">
-                  <Leaf
-                    size={14}
-                    className="text-gold"
-                  />
-                </span>
-
-                <div>
-                  <p className="text-xs font-medium uppercase tracking-[0.15em] text-foreground">
-                    Vegetarian
-                  </p>
-
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    Vegetarian dishes are marked throughout the
-                    menu.
-                  </p>
-                </div>
-              </div>
-
-              <a
-                href="#"
-                onClick={(event) =>
-                  event.preventDefault()
-                }
-                className="group inline-flex items-center justify-center gap-3 border border-charcoal/40 bg-background px-7 py-3.5 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-foreground transition-all duration-300 hover:-translate-y-1 hover:border-gold hover:text-gold"
-              >
-                <Download size={14} />
-
-                <span>Download Menu</span>
-
-                <ArrowRight
-                  size={14}
-                  className="transition-transform duration-300 group-hover:translate-x-1"
-                />
-              </a>
+            <div className="mt-9">
+              <ButtonLink to="/reservations">
+                Reserve a Table
+                <ArrowRight size={18} />
+              </ButtonLink>
             </div>
           </Reveal>
         </div>
       </section>
-
-      {/* =========================================================
-          SIGNATURE EXPERIENCE
-      ========================================================= */}
-      <section className="bg-background py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="card-animate overflow-hidden bg-charcoal">
-            <div className="grid lg:grid-cols-2">
-              {/* Image */}
-              <div className="group relative min-h-[340px] overflow-hidden lg:min-h-[500px]">
-                <img
-                  src={images.chef}
-                  alt="SAVORA chef preparing a signature dish"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
-
-                <div className="absolute bottom-6 left-6 flex items-center gap-3 text-white sm:bottom-8 sm:left-8">
-                  <Sparkles
-                    size={15}
-                    className="text-gold"
-                  />
-
-                  <span className="text-[0.62rem] uppercase tracking-[0.2em]">
-                    Chef's Signature
-                  </span>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="flex items-center px-7 py-12 sm:px-12 sm:py-16 lg:px-16">
-                <div className="max-w-lg">
-                  <p className="text-[0.65rem] uppercase tracking-[0.28em] text-gold">
-                    Beyond the Plate
-                  </p>
-
-                  <h2 className="mt-5 font-display text-4xl leading-tight text-white sm:text-5xl">
-                    Crafted for
-                    <br />
-                    Memorable Moments
-                  </h2>
-
-                  <p className="mt-6 text-sm leading-7 text-white/65 sm:text-base">
-                    At SAVORA, dining is more than a meal. It
-                    is a carefully composed experience where
-                    flavor, atmosphere and hospitality come
-                    together around the table.
-                  </p>
-
-                  <a
-                    href="/reservations"
-                    className="group mt-8 inline-flex items-center gap-3 border border-white/25 px-6 py-3.5 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-white transition-all duration-300 hover:border-gold hover:text-gold"
-                  >
-                    Reserve Your Table
-
-                    <ArrowRight
-                      size={14}
-                      className="transition-transform duration-300 group-hover:translate-x-1"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================
-          EXPERIENCE FEATURES
-      ========================================================= */}
-      <section className="border-y border-border bg-secondary/20 py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="grid gap-10 md:grid-cols-3 md:divide-x md:divide-border">
-            <div className="card-animate">
-              <Reveal>
-                <div className="px-0 text-center md:px-8">
-                  <Leaf
-                    size={22}
-                    className="mx-auto text-gold"
-                  />
-
-                  <h3 className="mt-5 font-display text-2xl text-foreground">
-                    Seasonal Ingredients
-                  </h3>
-
-                  <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                    Fresh, carefully selected ingredients that
-                    reflect the best of every season.
-                  </p>
-                </div>
-              </Reveal>
-            </div>
-
-            <div className="card-animate">
-              <Reveal delay={100}>
-                <div className="px-0 text-center md:px-8">
-                  <Sparkles
-                    size={22}
-                    className="mx-auto text-gold"
-                  />
-
-                  <h3 className="mt-5 font-display text-2xl text-foreground">
-                    Thoughtful Craft
-                  </h3>
-
-                  <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                    Every dish is prepared with precision,
-                    balance and attention to detail.
-                  </p>
-                </div>
-              </Reveal>
-            </div>
-
-            <div className="card-animate">
-              <Reveal delay={200}>
-                <div className="px-0 text-center md:px-8">
-                  <UtensilsCrossed
-                    size={22}
-                    className="mx-auto text-gold"
-                  />
-
-                  <h3 className="mt-5 font-display text-2xl text-foreground">
-                    Elegant Experience
-                  </h3>
-
-                  <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                    A refined dining atmosphere designed for
-                    conversations, celebrations and memorable
-                    evenings.
-                  </p>
-                </div>
-              </Reveal>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================
-          LOCATION
-      ========================================================= */}
-      <section className="bg-background py-16 sm:py-20">
-        <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
-          <p className="text-[0.63rem] uppercase tracking-[0.28em] text-gold">
-            Visit SAVORA
-          </p>
-
-          <h2 className="mt-4 font-display text-3xl text-foreground sm:text-4xl">
-            Your Table Awaits
-          </h2>
-
-          <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-muted-foreground">
-            SAVORA Restaurant, Koregaon Park, Pune,
-            Maharashtra, India
-          </p>
-        </div>
-      </section>
-
-      {/* =========================================================
-          FINAL CTA
-      ========================================================= */}
-      <CTASection
-        title="Hungry Already?"
-        text="Join us at SAVORA for an unforgettable dining experience in Koregaon Park, Pune."
-      />
     </Layout>
   );
 }
+
+export const Route = createFileRoute("/menu")({
+  component: MenuPage,
+});
