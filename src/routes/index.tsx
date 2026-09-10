@@ -1,3 +1,4 @@
+
 import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowLeft,
@@ -23,37 +24,6 @@ import {
   signatureDishes,
   testimonials,
 } from "@/data/site";
-
-/* =========================================================
-   ROUTE
-   ========================================================= */
-
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      {
-        title: "SAVORA — Where Every Bite Tells a Story",
-      },
-      {
-        name: "description",
-        content:
-          "SAVORA is a modern fine-dining restaurant serving seasonal, ingredient-led cooking. Reserve your table for an unforgettable evening.",
-      },
-      {
-        property: "og:title",
-        content:
-          "SAVORA — Where Every Bite Tells a Story",
-      },
-      {
-        property: "og:description",
-        content:
-          "Seasonal fine dining, warm hospitality and timeless culinary craft.",
-      },
-    ],
-  }),
-
-  component: HomePage,
-});
 
 /* =========================================================
    EXPERIENCE PILLARS
@@ -97,7 +67,6 @@ const pillars = [
 function HomePage() {
   /* =======================================================
      HERO SLIDER
-     Image + text changes together
      ======================================================= */
 
   const heroSlides = [
@@ -160,8 +129,6 @@ function HomePage() {
   const currentHero =
     heroSlides[heroIndex] ?? heroSlides[0]!;
 
-  /* Automatic Hero slider */
-
   useEffect(() => {
     const interval = setInterval(() => {
       setHeroIndex((current) =>
@@ -215,8 +182,6 @@ function HomePage() {
 
       <section className="group relative flex min-h-[94svh] items-center overflow-hidden bg-charcoal">
 
-        {/* HERO IMAGE */}
-
         <img
           key={heroIndex}
           src={currentHero.image}
@@ -237,13 +202,9 @@ function HomePage() {
           "
         />
 
-        {/* DARK OVERLAY */}
-
         <div className="absolute inset-0 bg-charcoal/55" />
 
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/40 to-charcoal/85" />
-
-        {/* HERO CONTENT */}
 
         <div
           className="
@@ -268,8 +229,6 @@ function HomePage() {
             className="mx-auto max-w-4xl"
           >
 
-            {/* EYEBROW */}
-
             <div className="flex items-center justify-center gap-4">
 
               <span className="h-px w-12 bg-gold" />
@@ -281,8 +240,6 @@ function HomePage() {
               <span className="h-px w-12 bg-gold" />
 
             </div>
-
-            {/* HEADING */}
 
             <h1
               className="
@@ -302,8 +259,6 @@ function HomePage() {
               </span>
             </h1>
 
-            {/* DESCRIPTION */}
-
             <p
               className="
                 mx-auto
@@ -317,8 +272,6 @@ function HomePage() {
             >
               {currentHero.description}
             </p>
-
-            {/* BUTTONS */}
 
             <div
               className="
@@ -347,8 +300,6 @@ function HomePage() {
               </ButtonLink>
 
             </div>
-
-            {/* KEYWORDS */}
 
             <div
               className="
@@ -398,8 +349,6 @@ function HomePage() {
           "
         >
 
-          {/* PREVIOUS */}
-
           <button
             type="button"
             onClick={() =>
@@ -431,8 +380,6 @@ function HomePage() {
             <ArrowLeft size={16} />
           </button>
 
-          {/* DOTS */}
-
           <div className="flex items-center gap-2">
 
             {heroSlides.map((_, index) => (
@@ -463,8 +410,6 @@ function HomePage() {
             ))}
 
           </div>
-
-          {/* NEXT */}
 
           <button
             type="button"
@@ -510,6 +455,7 @@ function HomePage() {
             justify-center
           "
         >
+
           <div
             className="
               flex
@@ -530,6 +476,7 @@ function HomePage() {
               aria-hidden="true"
             />
           </div>
+
         </div>
 
       </section>
@@ -710,8 +657,6 @@ function HomePage() {
         "
       >
 
-        {/* SOFT BACKGROUND DECORATION */}
-
         <div
           className="
             pointer-events-none
@@ -740,8 +685,6 @@ function HomePage() {
           "
         />
 
-        {/* MAIN CONTENT */}
-
         <div
           className="
             relative
@@ -752,8 +695,6 @@ function HomePage() {
           "
         >
 
-          {/* TITLE */}
-
           <SectionTitle
             eyebrow="From the Kitchen"
             title="Dishes We're Known For"
@@ -762,8 +703,6 @@ function HomePage() {
               that capture the spirit of the SAVORA kitchen.
             "
           />
-
-          {/* DISH CARDS */}
 
           <div
             className="
@@ -784,8 +723,6 @@ function HomePage() {
             ))}
 
           </div>
-
-          {/* FULL MENU BUTTON */}
 
           <div className="mt-14 flex justify-center">
 
@@ -955,8 +892,6 @@ function HomePage() {
                 "
               >
 
-                {/* PREVIOUS */}
-
                 <button
                   type="button"
                   onClick={previousTestimonial}
@@ -979,8 +914,6 @@ function HomePage() {
                 >
                   <ArrowLeft size={17} />
                 </button>
-
-                {/* DOTS */}
 
                 <div className="flex items-center gap-2">
 
@@ -1014,8 +947,6 @@ function HomePage() {
                   )}
 
                 </div>
-
-                {/* NEXT */}
 
                 <button
                   type="button"
@@ -1064,155 +995,84 @@ function HomePage() {
         </div>
       </section>
 
-      {/* =====================================================
-          GOOD FOOD / GOOD COMPANY
-          ===================================================== */}
+      ```tsx
+{/* A PLACE TO GATHER */}
+<section className="relative overflow-hidden px-6 py-20 sm:py-28">
+  {/* Background Image */}
+  <img
+    src={images.privateRoom}
+    alt=""
+    aria-hidden="true"
+    loading="lazy"
+    className="absolute inset-0 h-full w-full object-cover object-center"
+  />
 
-      <section
-        className="
-          relative
-          isolate
-          overflow-hidden
-          bg-charcoal
-          py-28
-          sm:py-36
-        "
-      >
+  {/* Image Overlay */}
+  <div className="absolute inset-0 bg-black/55" />
 
-        {/* BACKGROUND IMAGE */}
+  {/* Content */}
+  <div className="relative z-10 mx-auto max-w-4xl">
+    <div className="rounded-3xl border border-white/20 bg-black/30 px-6 py-12 text-center shadow-2xl backdrop-blur-[2px] sm:px-12 sm:py-16">
+      
+      <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#d4b16a]">
+        A PLACE TO GATHER
+      </p>
 
-        <div className="absolute inset-0 -z-20">
+      <h2 className="font-serif text-4xl font-medium leading-tight text-white sm:text-5xl lg:text-6xl">
+        Good food. Good company.
+        <br />
+        <span className="italic text-[#d4b16a]">
+          Great memories.
+        </span>
+      </h2>
 
-          <img
-            src={images.privateRoom}
-            alt="SAVORA private dining experience"
-            width={1920}
-            height={1280}
-            loading="lazy"
-            className="
-              h-full
-              w-full
-              object-cover
-              object-center
-            "
-          />
+      <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-white/80 sm:text-base">
+        Come together over thoughtfully prepared dishes, warm hospitality,
+        and an atmosphere made for meaningful moments.
+      </p>
 
-        </div>
+      <div className="mt-8 flex justify-center">
+        <ButtonLink to="/reservations" variant="gold">
+          Reserve a Table
+        </ButtonLink>
+      </div>
 
-        {/* OVERLAY */}
+    </div>
+  </div>
+  </section>
 
-        <div className="absolute inset-0 -z-10 bg-charcoal/75" />
-
-        <div
-          className="
-            absolute
-            inset-0
-            -z-10
-            bg-gradient-to-b
-            from-charcoal/80
-            via-charcoal/65
-            to-charcoal/90
-          "
-        />
-
-        {/* CONTENT */}
-
-        <div
-          className="
-            relative
-            mx-auto
-            max-w-5xl
-            px-5
-            text-center
-            sm:px-8
-          "
-        >
-
-          <Reveal>
-
-            {/* EYEBROW */}
-
-            <div className="flex items-center justify-center gap-4">
-
-              <span className="h-px w-12 bg-gold/80" />
-
-              <p className="eyebrow text-gold">
-                A PLACE TO GATHER
-              </p>
-
-              <span className="h-px w-12 bg-gold/80" />
-
-            </div>
-
-            {/* BRAND MESSAGE */}
-
-            <h2
-              className="
-                mt-7
-                font-display
-                text-4xl
-                leading-[1.05]
-                text-cream
-                sm:text-5xl
-                lg:text-6xl
-              "
-            >
-              Good food. Good company.
-
-              <span
-                className="
-                  mt-2
-                  block
-                  italic
-                  text-gold
-                "
-              >
-                Great memories.
-              </span>
-            </h2>
-
-            {/* DIVIDER */}
-
-            <div className="mx-auto mt-8 h-px w-16 bg-gold/60" />
-
-            {/* DESCRIPTION */}
-
-            <p
-              className="
-                mx-auto
-                mt-7
-                max-w-3xl
-                text-sm
-                leading-8
-                text-cream/75
-                sm:text-base
-              "
-            >
-              SAVORA Restaurant, Koregaon Park, Pune,
-              Maharashtra, India. Join us for an evening
-              designed around exceptional food and
-              meaningful moments.
-            </p>
-
-            {/* RESERVATION BUTTON */}
-
-            <div className="mt-9 flex justify-center">
-
-              <ButtonLink
-                to="/reservations"
-                variant="gold"
-              >
-                Reserve Your Table
-                <ArrowRight size={15} />
-              </ButtonLink>
-
-            </div>
-
-          </Reveal>
-
-        </div>
-      </section>
 
     </Layout>
   );
 }
+
+/* =========================================================
+   ROUTE
+   ========================================================= */
+
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      {
+        title: "SAVORA — Where Every Bite Tells a Story",
+      },
+      {
+        name: "description",
+        content:
+          "SAVORA is a modern fine-dining restaurant serving seasonal, ingredient-led cooking. Reserve your table for an unforgettable evening.",
+      },
+      {
+        property: "og:title",
+        content:
+          "SAVORA — Where Every Bite Tells a Story",
+      },
+      {
+        property: "og:description",
+        content:
+          "Seasonal fine dining, warm hospitality and timeless culinary craft.",
+      },
+    ],
+  }),
+
+  component: HomePage,
+});
