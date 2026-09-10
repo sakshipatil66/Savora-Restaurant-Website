@@ -78,8 +78,8 @@ function GalleryPage() {
       {/* =========================================================
           INTRO
       ========================================================= */}
-      <section className="py-20 sm:py-28">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
+      <section className="py-16 sm:py-24 lg:py-28">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:gap-12 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
           <Reveal>
             <p className="eyebrow">Inside SAVORA</p>
 
@@ -87,9 +87,9 @@ function GalleryPage() {
               More than photographs. A feeling of the room.
             </h2>
 
-            <div className="hairline mt-7" />
+            <div className="hairline mt-6 sm:mt-7" />
 
-            <p className="mt-7 text-sm leading-relaxed text-muted-foreground sm:text-base">
+            <p className="mt-6 text-sm leading-relaxed text-muted-foreground sm:mt-7 sm:text-base">
               SAVORA is designed to be experienced slowly. From
               the first glimpse of the dining room to the final
               course, every detail contributes to the evening.
@@ -100,8 +100,8 @@ function GalleryPage() {
               dishes that define the season.
             </p>
 
-            <div className="mt-8 flex items-center gap-3 text-sm font-medium">
-              <span className="h-px w-10 bg-gold" />
+            <div className="mt-7 flex items-center gap-3 text-sm font-medium sm:mt-8">
+              <span className="h-px w-8 bg-gold sm:w-10" />
               Koregaon Park · Pune
             </div>
           </Reveal>
@@ -122,20 +122,20 @@ function GalleryPage() {
       {/* =========================================================
           HIGHLIGHTS
       ========================================================= */}
-      <section className="bg-secondary/60 py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <section className="bg-secondary/60 py-16 sm:py-24 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionTitle
             eyebrow="Explore SAVORA"
             title="Three Sides of the Experience"
             description="Food, atmosphere and the moments created around the table."
           />
 
-          <div className="mt-14 grid gap-6 sm:grid-cols-3">
+          <div className="mt-10 grid gap-5 sm:mt-14 sm:grid-cols-3 sm:gap-6">
             {highlights.map((item, i) => (
               <Reveal
                 key={item.title}
                 delay={i * 90}
-                className="card-animate group border border-border bg-background p-7"
+                className="card-animate group border border-border bg-background p-5 sm:p-7"
               >
                 <div className="flex items-center justify-between">
                   <span className="font-display text-sm text-gold">
@@ -150,7 +150,7 @@ function GalleryPage() {
                   />
                 </div>
 
-                <h3 className="mt-8 font-display text-2xl">
+                <h3 className="mt-6 font-display text-xl sm:mt-8 sm:text-2xl">
                   {item.title}
                 </h3>
 
@@ -158,7 +158,7 @@ function GalleryPage() {
                   {item.text}
                 </p>
 
-                <div className="mt-7 h-px w-8 bg-gold transition-all duration-300 group-hover:w-14" />
+                <div className="mt-6 h-px w-8 bg-gold transition-all duration-300 group-hover:w-14 sm:mt-7" />
               </Reveal>
             ))}
           </div>
@@ -168,15 +168,15 @@ function GalleryPage() {
       {/* =========================================================
           GALLERY
       ========================================================= */}
-      <section className="py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <section className="py-16 sm:py-24 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionTitle
             eyebrow="The Collection"
             title="Moments From the Room"
             description="A visual collection of our dishes, people, spaces and evenings at SAVORA."
           />
 
-          <Reveal delay={100} className="mt-14">
+          <Reveal delay={100} className="mt-10 sm:mt-14">
             <GalleryGrid images={galleryImages} />
           </Reveal>
         </div>
@@ -185,8 +185,8 @@ function GalleryPage() {
       {/* =========================================================
           FEATURED SPACE
       ========================================================= */}
-      <section className="bg-foreground py-20 text-background sm:py-28">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
+      <section className="bg-foreground py-16 text-background sm:py-24 lg:py-28">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:gap-12 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
           <Reveal>
             <div className="card-animate group overflow-hidden">
               <img
@@ -207,9 +207,9 @@ function GalleryPage() {
               Where the evening begins.
             </h2>
 
-            <div className="mt-7 h-px w-14 bg-gold" />
+            <div className="mt-6 h-px w-14 bg-gold sm:mt-7" />
 
-            <p className="mt-7 text-sm leading-relaxed text-background/70 sm:text-base">
+            <p className="mt-6 text-sm leading-relaxed text-background/70 sm:mt-7 sm:text-base">
               Behind every plate is a team working with focus,
               patience and respect for the ingredients. Our open
               kitchen lets a little of that craft become part of
@@ -218,7 +218,7 @@ function GalleryPage() {
 
             <a
               href="/experience"
-              className="mt-8 inline-flex items-center gap-2 border border-background/40 px-6 py-3 text-sm font-medium transition-all duration-300 hover:-translate-y-1 hover:bg-background hover:text-foreground"
+              className="mt-7 inline-flex w-full items-center justify-center gap-2 border border-background/40 px-5 py-3 text-sm font-medium transition-all duration-300 hover:-translate-y-1 hover:bg-background hover:text-foreground sm:mt-8 sm:w-auto sm:px-6"
             >
               Discover the Experience
               <ArrowRight size={16} />

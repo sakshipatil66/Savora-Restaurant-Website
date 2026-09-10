@@ -1,4 +1,3 @@
-
 import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -139,49 +138,128 @@ function ExperiencePage() {
       {/* =========================================================
           INTRO
       ========================================================= */}
-      <section className="py-20 sm:py-28">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
+      <section
+        className="
+          py-16
+          sm:py-24
+          lg:py-28
+        "
+      >
+        <div
+          className="
+            mx-auto
+            grid
+            max-w-7xl
+            items-center
+            gap-10
+            px-4
+            sm:gap-12
+            sm:px-8
+            lg:grid-cols-2
+            lg:gap-20
+          "
+        >
           <Reveal>
             <p className="eyebrow">
               The SAVORA Difference
             </p>
 
-            <h2 className="mt-4 text-3xl leading-tight sm:text-5xl">
+            <h2
+              className="
+                mt-4
+                text-3xl
+                leading-tight
+                sm:text-5xl
+              "
+            >
               Designed for the way a great evening should feel.
             </h2>
 
-            <div className="hairline mt-7" />
+            <div className="hairline mt-6 sm:mt-7" />
 
-            <p className="mt-7 text-sm leading-relaxed text-muted-foreground sm:text-base">
+            <p
+              className="
+                mt-6
+                text-sm
+                leading-7
+                text-muted-foreground
+                sm:mt-7
+                sm:text-base
+                sm:leading-relaxed
+              "
+            >
               At SAVORA, every detail is considered — from the
               first welcome to the final course. We believe fine
               dining should never feel rushed or overly formal.
             </p>
 
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+            <p
+              className="
+                mt-4
+                text-sm
+                leading-7
+                text-muted-foreground
+                sm:text-base
+                sm:leading-relaxed
+              "
+            >
               Our forty-two-seat dining room gives our team the
               space to focus on what matters: exceptional food,
               genuine hospitality and making your table feel like
               it belongs to you.
             </p>
 
-            <div className="mt-8 flex items-center gap-3 text-sm font-medium">
-              <span className="h-px w-10 bg-gold" />
+            <div
+              className="
+                mt-7
+                flex
+                items-center
+                gap-3
+                text-sm
+                font-medium
+                sm:mt-8
+              "
+            >
+              <span className="h-px w-8 bg-gold sm:w-10" />
               Koregaon Park · Pune
             </div>
           </Reveal>
 
-          <Reveal delay={120} className="relative">
+          <Reveal
+            delay={120}
+            className="relative"
+          >
             <div className="card-animate group overflow-hidden">
               <img
                 src={images.diningRoom}
                 alt="Elegant SAVORA dining room in Koregaon Park Pune"
                 loading="lazy"
-                className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="
+                  aspect-[4/3]
+                  w-full
+                  object-cover
+                  transition-transform
+                  duration-700
+                  group-hover:scale-105
+                "
               />
             </div>
 
-            <div className="absolute -bottom-6 -left-3 hidden bg-background px-6 py-5 shadow-xl sm:block">
+            <div
+              className="
+                absolute
+                -bottom-5
+                left-3
+                hidden
+                bg-background
+                px-5
+                py-4
+                shadow-xl
+                sm:block
+                sm:px-6
+                sm:py-5
+              "
+            >
               <p className="eyebrow">42 Seats</p>
 
               <p className="mt-1 font-display text-lg">
@@ -195,20 +273,45 @@ function ExperiencePage() {
       {/* =========================================================
           FEATURES
       ========================================================= */}
-      <section className="bg-secondary/60 py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <section
+        className="
+          bg-secondary/60
+          py-16
+          sm:py-24
+          lg:py-28
+        "
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-8">
           <SectionTitle
             eyebrow="Why SAVORA"
             title="An Experience Built Around You"
             description="From the kitchen to the dining room, every element has a purpose."
           />
 
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div
+            className="
+              mt-10
+              grid
+              gap-4
+              sm:mt-14
+              sm:grid-cols-2
+              sm:gap-6
+              lg:grid-cols-4
+            "
+          >
             {experienceFeatures.map((item, i) => (
               <Reveal
                 key={item.title}
                 delay={i * 90}
-                className="card-animate group border border-border bg-background p-7"
+                className="
+                  card-animate
+                  group
+                  border
+                  border-border
+                  bg-background
+                  p-5
+                  sm:p-7
+                "
               >
                 <div className="flex items-center justify-between">
                   <span className="font-display text-sm text-gold">
@@ -216,22 +319,53 @@ function ExperiencePage() {
                   </span>
 
                   <item.Icon
-                    size={22}
+                    size={21}
                     strokeWidth={1.5}
-                    className="text-muted-foreground transition-colors duration-300 group-hover:text-gold"
+                    className="
+                      text-muted-foreground
+                      transition-colors
+                      duration-300
+                      group-hover:text-gold
+                    "
                     aria-hidden="true"
                   />
                 </div>
 
-                <h3 className="mt-8 font-display text-xl">
+                <h3
+                  className="
+                    mt-6
+                    font-display
+                    text-xl
+                    sm:mt-8
+                  "
+                >
                   {item.title}
                 </h3>
 
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                <p
+                  className="
+                    mt-3
+                    text-sm
+                    leading-6
+                    text-muted-foreground
+                    sm:leading-relaxed
+                  "
+                >
                   {item.text}
                 </p>
 
-                <div className="mt-7 h-px w-8 bg-gold transition-all duration-300 group-hover:w-14" />
+                <div
+                  className="
+                    mt-6
+                    h-px
+                    w-8
+                    bg-gold
+                    transition-all
+                    duration-300
+                    group-hover:w-14
+                    sm:mt-7
+                  "
+                />
               </Reveal>
             ))}
           </div>
@@ -241,15 +375,30 @@ function ExperiencePage() {
       {/* =========================================================
           ATMOSPHERE
       ========================================================= */}
-      <section className="py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <section
+        className="
+          py-16
+          sm:py-24
+          lg:py-28
+        "
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-8">
           <SectionTitle
             eyebrow="Discover the Space"
             title="Every Corner Has a Story"
             description="A carefully designed environment where food, light and atmosphere work together."
           />
 
-          <div className="mt-14 grid gap-8 sm:grid-cols-2">
+          <div
+            className="
+              mt-10
+              grid
+              gap-7
+              sm:mt-14
+              sm:grid-cols-2
+              sm:gap-8
+            "
+          >
             {atmosphere.map((item, i) => (
               <Reveal
                 key={item.title}
@@ -261,21 +410,70 @@ function ExperiencePage() {
                     src={item.image}
                     alt={item.title}
                     loading="lazy"
-                    className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    className="
+                      aspect-[4/3]
+                      w-full
+                      object-cover
+                      transition-transform
+                      duration-700
+                      ease-out
+                      group-hover:scale-105
+                    "
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent opacity-80" />
+                  <div
+                    className="
+                      absolute
+                      inset-0
+                      bg-gradient-to-t
+                      from-black/65
+                      via-transparent
+                      to-transparent
+                      opacity-80
+                    "
+                  />
 
-                  <span className="absolute bottom-5 left-5 text-xs font-medium uppercase tracking-[0.18em] text-white/80">
+                  <span
+                    className="
+                      absolute
+                      bottom-4
+                      left-4
+                      text-[0.6rem]
+                      font-medium
+                      uppercase
+                      tracking-[0.15em]
+                      text-white/80
+                      sm:bottom-5
+                      sm:left-5
+                      sm:text-xs
+                      sm:tracking-[0.18em]
+                    "
+                  >
                     {item.eyebrow}
                   </span>
                 </div>
 
-                <h3 className="mt-5 font-display text-2xl">
+                <h3
+                  className="
+                    mt-4
+                    font-display
+                    text-xl
+                    sm:mt-5
+                    sm:text-2xl
+                  "
+                >
                   {item.title}
                 </h3>
 
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                <p
+                  className="
+                    mt-2
+                    text-sm
+                    leading-6
+                    text-muted-foreground
+                    sm:leading-relaxed
+                  "
+                >
                   {item.text}
                 </p>
               </Reveal>
@@ -287,15 +485,42 @@ function ExperiencePage() {
       {/* =========================================================
           PRIVATE DINING
       ========================================================= */}
-      <section className="bg-secondary/60 py-20 sm:py-28">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
+      <section
+        className="
+          bg-secondary/60
+          py-16
+          sm:py-24
+          lg:py-28
+        "
+      >
+        <div
+          className="
+            mx-auto
+            grid
+            max-w-7xl
+            items-center
+            gap-10
+            px-4
+            sm:gap-12
+            sm:px-8
+            lg:grid-cols-2
+            lg:gap-20
+          "
+        >
           <Reveal>
             <div className="card-animate group overflow-hidden">
               <img
                 src={images.privateRoom}
                 alt="SAVORA private dining room for special celebrations"
                 loading="lazy"
-                className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="
+                  aspect-[4/3]
+                  w-full
+                  object-cover
+                  transition-transform
+                  duration-700
+                  group-hover:scale-105
+                "
               />
             </div>
           </Reveal>
@@ -305,20 +530,37 @@ function ExperiencePage() {
               Private Dining · The Koregaon Room
             </p>
 
-            <h2 className="mt-4 text-3xl leading-tight sm:text-5xl">
+            <h2
+              className="
+                mt-4
+                text-3xl
+                leading-tight
+                sm:text-5xl
+              "
+            >
               Your celebration, your room, your evening.
             </h2>
 
-            <div className="hairline mt-7" />
+            <div className="hairline mt-6 sm:mt-7" />
 
-            <p className="mt-7 text-sm leading-relaxed text-muted-foreground sm:text-base">
+            <p
+              className="
+                mt-6
+                text-sm
+                leading-7
+                text-muted-foreground
+                sm:mt-7
+                sm:text-base
+                sm:leading-relaxed
+              "
+            >
               Our private dining room offers an intimate
               setting for up to fourteen guests. From milestone
               celebrations to executive dinners, the experience
               can be shaped around your occasion.
             </p>
 
-            <div className="mt-7 space-y-4">
+            <div className="mt-6 space-y-3 sm:mt-7 sm:space-y-4">
               {[
                 "Seats 8–14 guests",
                 "Bespoke menu created with the chef",
@@ -327,20 +569,59 @@ function ExperiencePage() {
               ].map((feature) => (
                 <div
                   key={feature}
-                  className="flex items-center gap-3 text-sm"
+                  className="
+                    flex
+                    items-start
+                    gap-3
+                    text-sm
+                  "
                 >
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-gold text-gold">
+                  <span
+                    className="
+                      mt-0.5
+                      flex
+                      h-5
+                      w-5
+                      shrink-0
+                      items-center
+                      justify-center
+                      rounded-full
+                      border
+                      border-gold
+                      text-gold
+                    "
+                  >
                     ✓
                   </span>
 
-                  {feature}
+                  <span>{feature}</span>
                 </div>
               ))}
             </div>
 
             <a
               href="/reservations"
-              className="mt-8 inline-flex items-center gap-2 border border-foreground px-6 py-3 text-sm font-medium transition-all duration-300 hover:-translate-y-1 hover:bg-foreground hover:text-background"
+              className="
+                mt-7
+                inline-flex
+                items-center
+                gap-2
+                border
+                border-foreground
+                px-5
+                py-3
+                text-xs
+                font-medium
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:bg-foreground
+                hover:text-background
+                sm:mt-8
+                sm:px-6
+                sm:py-3
+                sm:text-sm
+              "
             >
               Enquire About Private Dining
               <ArrowRight size={16} />
@@ -352,39 +633,111 @@ function ExperiencePage() {
       {/* =========================================================
           OCCASIONS
       ========================================================= */}
-      <section className="py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <section
+        className="
+          py-16
+          sm:py-24
+          lg:py-28
+        "
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-8">
           <SectionTitle
             eyebrow="Celebrate at SAVORA"
             title="Made for Meaningful Occasions"
             description="Whatever brings you to the table, our team is here to make the evening feel special."
           />
 
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div
+            className="
+              mt-10
+              grid
+              gap-4
+              sm:mt-14
+              sm:grid-cols-2
+              sm:gap-6
+              lg:grid-cols-4
+            "
+          >
             {occasions.map((item, i) => (
               <Reveal
                 key={item.title}
                 delay={i * 90}
-                className="card-animate group border border-border bg-card p-7"
+                className="
+                  card-animate
+                  group
+                  border
+                  border-border
+                  bg-card
+                  p-5
+                  sm:p-7
+                "
               >
-                <div className="flex h-11 w-11 items-center justify-center border border-gold/40 text-gold transition-all duration-300 group-hover:bg-gold group-hover:text-background">
+                <div
+                  className="
+                    flex
+                    h-10
+                    w-10
+                    items-center
+                    justify-center
+                    border
+                    border-gold/40
+                    text-gold
+                    transition-all
+                    duration-300
+                    group-hover:bg-gold
+                    group-hover:text-background
+                    sm:h-11
+                    sm:w-11
+                  "
+                >
                   <item.Icon
-                    size={20}
+                    size={19}
                     strokeWidth={1.5}
                   />
                 </div>
 
-                <h3 className="mt-6 font-display text-xl">
+                <h3
+                  className="
+                    mt-5
+                    font-display
+                    text-xl
+                    sm:mt-6
+                  "
+                >
                   {item.title}
                 </h3>
 
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                <p
+                  className="
+                    mt-3
+                    text-sm
+                    leading-6
+                    text-muted-foreground
+                    sm:leading-relaxed
+                  "
+                >
                   {item.text}
                 </p>
 
                 <a
                   href="/reservations"
-                  className="mt-6 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.14em] transition-all duration-300 hover:translate-x-1 hover:text-gold"
+                  className="
+                    mt-5
+                    inline-flex
+                    items-center
+                    gap-2
+                    text-[0.62rem]
+                    font-medium
+                    uppercase
+                    tracking-[0.12em]
+                    transition-all
+                    duration-300
+                    hover:translate-x-1
+                    hover:text-gold
+                    sm:mt-6
+                    sm:text-xs
+                    sm:tracking-[0.14em]
+                  "
                 >
                   Plan Your Evening
                   <ArrowRight size={14} />
@@ -398,20 +751,69 @@ function ExperiencePage() {
       {/* =========================================================
           WINE
       ========================================================= */}
-      <section className="bg-foreground py-20 text-background sm:py-28">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
+      <section
+        className="
+          bg-foreground
+          py-16
+          text-background
+          sm:py-24
+          lg:py-28
+        "
+      >
+        <div
+          className="
+            mx-auto
+            grid
+            max-w-7xl
+            items-center
+            gap-10
+            px-4
+            sm:gap-12
+            sm:px-8
+            lg:grid-cols-2
+            lg:gap-20
+          "
+        >
           <Reveal>
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-gold">
+            <p
+              className="
+                text-[0.62rem]
+                font-medium
+                uppercase
+                tracking-[0.18em]
+                text-gold
+                sm:text-xs
+                sm:tracking-[0.2em]
+              "
+            >
               Wine & Beverage
             </p>
 
-            <h2 className="mt-4 font-display text-3xl leading-tight sm:text-5xl">
+            <h2
+              className="
+                mt-4
+                font-display
+                text-3xl
+                leading-tight
+                sm:text-5xl
+              "
+            >
               A list chosen to listen to the food.
             </h2>
 
-            <div className="mt-7 h-px w-14 bg-gold" />
+            <div className="mt-6 h-px w-12 bg-gold sm:mt-7 sm:w-14" />
 
-            <p className="mt-7 text-sm leading-relaxed text-background/70 sm:text-base">
+            <p
+              className="
+                mt-6
+                text-sm
+                leading-7
+                text-background/70
+                sm:mt-7
+                sm:text-base
+                sm:leading-relaxed
+              "
+            >
               Our cellar brings together around two hundred
               labels, with a focus on small growers and
               expressive bottles. Each pairing is designed to
@@ -419,7 +821,16 @@ function ExperiencePage() {
               compete with it.
             </p>
 
-            <p className="mt-4 text-sm leading-relaxed text-background/70 sm:text-base">
+            <p
+              className="
+                mt-4
+                text-sm
+                leading-7
+                text-background/70
+                sm:text-base
+                sm:leading-relaxed
+              "
+            >
               Prefer something without alcohol? Our
               non-alcoholic pairing receives the same attention,
               with house-made infusions, botanical blends and
@@ -433,7 +844,15 @@ function ExperiencePage() {
                 src={images.wine}
                 alt="Wine being poured at SAVORA"
                 loading="lazy"
-                className="aspect-[4/3] w-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-105"
+                className="
+                  aspect-[4/3]
+                  w-full
+                  object-cover
+                  opacity-90
+                  transition-transform
+                  duration-700
+                  group-hover:scale-105
+                "
               />
             </div>
           </Reveal>

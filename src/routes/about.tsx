@@ -26,8 +26,7 @@ export const Route = createFileRoute("/about")({
       },
       {
         property: "og:title",
-        content:
-          "About SAVORA — Our Story & Philosophy",
+        content: "About SAVORA — Our Story & Philosophy",
       },
       {
         property: "og:description",
@@ -251,6 +250,16 @@ function AboutPage() {
           transform: translateX(5px);
         }
 
+        @media (max-width: 640px) {
+          .about-card-hover:hover {
+            transform: translateY(-4px);
+          }
+
+          .about-image-hover:hover {
+            transform: scale(1.02);
+          }
+        }
+
         @media (prefers-reduced-motion: reduce) {
           .about-fade-up,
           .about-fade-down,
@@ -285,18 +294,21 @@ function AboutPage() {
       {/* =====================================================
           INTRODUCTION
           ===================================================== */}
-      <section className="relative overflow-hidden py-24 sm:py-32">
+      <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
         <div
           className="
             about-glow
             absolute
-            right-[-100px]
-            top-20
-            h-80
-            w-80
+            right-[-140px]
+            top-16
+            h-64
+            w-64
             rounded-full
             bg-gold/5
             blur-3xl
+            sm:right-[-100px]
+            sm:h-80
+            sm:w-80
           "
         />
 
@@ -306,8 +318,9 @@ function AboutPage() {
             grid
             max-w-7xl
             items-center
-            gap-14
-            px-5
+            gap-10
+            px-4
+            sm:gap-14
             sm:px-8
             lg:grid-cols-[1.05fr_0.95fr]
             lg:gap-20
@@ -321,10 +334,11 @@ function AboutPage() {
 
               <h2
                 className="
-                  mt-5
+                  mt-4
                   max-w-2xl
-                  text-4xl
+                  text-3xl
                   leading-tight
+                  sm:mt-5
                   sm:text-5xl
                 "
               >
@@ -334,16 +348,18 @@ function AboutPage() {
                 </span>
               </h2>
 
-              <div className="hairline mt-7 w-20" />
+              <div className="hairline mt-6 w-16 sm:mt-7 sm:w-20" />
 
               <p
                 className="
-                  mt-7
+                  mt-6
                   max-w-xl
                   text-sm
-                  leading-8
+                  leading-7
                   text-muted-foreground
+                  sm:mt-7
                   sm:text-base
+                  sm:leading-8
                 "
               >
                 We are not interested in spectacle for its own
@@ -355,12 +371,14 @@ function AboutPage() {
 
               <p
                 className="
-                  mt-5
+                  mt-4
                   max-w-xl
                   text-sm
-                  leading-8
+                  leading-7
                   text-muted-foreground
+                  sm:mt-5
                   sm:text-base
+                  sm:leading-8
                 "
               >
                 That means fewer dishes, done properly. A service
@@ -370,24 +388,27 @@ function AboutPage() {
                 been cleared.
               </p>
 
-              <div className="mt-9">
+              <div className="mt-7 sm:mt-9">
                 <div
                   className="
                     inline-flex
                     items-center
-                    gap-4
+                    gap-3
                     border-l
                     border-gold
-                    pl-5
+                    pl-4
                     transition-all
                     duration-500
-                    hover:pl-7
+                    hover:pl-6
+                    sm:gap-4
+                    sm:pl-5
+                    sm:hover:pl-7
                   "
                 >
                   <div>
                     <p
                       className="
-                        text-[0.6rem]
+                        text-[0.58rem]
                         uppercase
                         tracking-[0.25em]
                         text-gold
@@ -449,26 +470,32 @@ function AboutPage() {
               <div
                 className="
                   absolute
-                  bottom-6
-                  left-6
+                  bottom-4
+                  left-4
+                  max-w-[calc(100%-2rem)]
                   border
                   border-cream/25
                   bg-charcoal/75
-                  px-5
-                  py-4
+                  px-4
+                  py-3
                   backdrop-blur-sm
                   transition-all
                   duration-500
                   group-hover:-translate-y-2
                   group-hover:border-gold/50
+                  sm:bottom-6
+                  sm:left-6
+                  sm:px-5
+                  sm:py-4
                 "
               >
                 <p
                   className="
-                    text-[0.58rem]
+                    text-[0.55rem]
                     uppercase
                     tracking-[0.25em]
                     text-gold
+                    sm:text-[0.58rem]
                   "
                 >
                   Ingredient First
@@ -486,8 +513,8 @@ function AboutPage() {
       {/* =====================================================
           OUR STORY
           ===================================================== */}
-      <section className="bg-secondary/60 py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <section className="bg-secondary/60 py-16 sm:py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-8">
           <SectionTitle
             eyebrow="Our Story"
             title="How SAVORA Came to Be"
@@ -498,14 +525,15 @@ function AboutPage() {
             className="
               relative
               mx-auto
-              mt-16
+              mt-10
               max-w-4xl
+              sm:mt-16
             "
           >
             <div
               className="
                 absolute
-                left-[1.15rem]
+                left-[1.1rem]
                 top-0
                 h-full
                 w-px
@@ -523,12 +551,13 @@ function AboutPage() {
                   className="
                     relative
                     grid
-                    grid-cols-[4rem_1fr]
-                    gap-6
-                    pb-14
+                    grid-cols-[3.25rem_1fr]
+                    gap-4
+                    pb-10
                     last:pb-0
                     sm:grid-cols-[8rem_1fr]
                     sm:gap-8
+                    sm:pb-14
                   "
                 >
                   <div
@@ -568,18 +597,28 @@ function AboutPage() {
                       animationDelay: `${120 + i * 140}ms`,
                     }}
                   >
-                    <p className="text-sm tracking-[0.2em] text-gold">
+                    <p
+                      className="
+                        text-xs
+                        tracking-[0.18em]
+                        text-gold
+                        sm:text-sm
+                        sm:tracking-[0.2em]
+                      "
+                    >
                       {step.year}
                     </p>
 
                     <h3
                       className="
-                        mt-2
+                        mt-1.5
                         font-display
-                        text-2xl
+                        text-xl
+                        leading-tight
                         transition-colors
                         duration-300
                         hover:text-gold
+                        sm:mt-2
                         sm:text-3xl
                       "
                     >
@@ -588,11 +627,13 @@ function AboutPage() {
 
                     <p
                       className="
-                        mt-3
+                        mt-2
                         max-w-2xl
                         text-sm
-                        leading-7
+                        leading-6
                         text-muted-foreground
+                        sm:mt-3
+                        sm:leading-7
                       "
                     >
                       {step.text}
@@ -608,8 +649,8 @@ function AboutPage() {
       {/* =====================================================
           PHILOSOPHY
           ===================================================== */}
-      <section className="py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <section className="py-16 sm:py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-8">
           <SectionTitle
             eyebrow="Our Philosophy"
             title="Four Things We Never Compromise"
@@ -618,10 +659,11 @@ function AboutPage() {
 
           <div
             className="
-              mt-16
+              mt-10
               grid
               border-y
               border-border
+              sm:mt-16
               sm:grid-cols-2
               lg:grid-cols-4
             "
@@ -634,12 +676,14 @@ function AboutPage() {
                   group
                   border-b
                   border-border
+                  last:border-b-0
+                  sm:[&:nth-child(3)]:border-b-0
                   lg:border-b-0
                   lg:border-r
                   lg:last:border-r-0
                 "
               >
-                <div className="about-card-hover h-full p-7">
+                <div className="about-card-hover h-full p-5 sm:p-7">
                   <div className="flex items-center justify-between">
                     <span
                       className="
@@ -655,7 +699,7 @@ function AboutPage() {
                     </span>
 
                     <item.Icon
-                      size={21}
+                      size={20}
                       className="
                         text-gold
                         transition-transform
@@ -669,12 +713,14 @@ function AboutPage() {
 
                   <h3
                     className="
-                      mt-9
+                      mt-7
                       font-display
-                      text-2xl
+                      text-xl
                       transition-transform
                       duration-500
                       group-hover:translate-x-1
+                      sm:mt-9
+                      sm:text-2xl
                     "
                   >
                     {item.title}
@@ -684,8 +730,9 @@ function AboutPage() {
                     className="
                       mt-3
                       text-sm
-                      leading-7
+                      leading-6
                       text-muted-foreground
+                      sm:leading-7
                     "
                   >
                     {item.text}
@@ -694,11 +741,12 @@ function AboutPage() {
                   <div
                     className="
                       hairline
-                      mt-6
+                      mt-5
                       w-8
                       transition-all
                       duration-500
                       group-hover:w-16
+                      sm:mt-6
                     "
                   />
                 </div>
@@ -711,8 +759,8 @@ function AboutPage() {
       {/* =====================================================
           CHEF
           ===================================================== */}
-      <section className="bg-secondary/60 py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <section className="bg-secondary/60 py-16 sm:py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-8">
           <Reveal>
             <div className="about-fade-up">
               <ChefCard variant="full" />
@@ -724,15 +772,24 @@ function AboutPage() {
       {/* =====================================================
           VALUES
           ===================================================== */}
-      <section className="py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <section className="py-16 sm:py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-8">
           <SectionTitle
             eyebrow="Our Values"
             title="What Guides the House"
             description="Beyond the menu, these are the values that shape how SAVORA works."
           />
 
-          <div className="mt-16 grid gap-5 md:grid-cols-2">
+          <div
+            className="
+              mt-10
+              grid
+              gap-4
+              sm:mt-16
+              sm:gap-5
+              md:grid-cols-2
+            "
+          >
             {values.map((value, i) => (
               <Reveal
                 key={value.title}
@@ -748,22 +805,25 @@ function AboutPage() {
                     border
                     border-border
                     bg-card
-                    p-8
+                    p-6
                     sm:p-10
                   "
                 >
                   <span
                     className="
                       absolute
-                      right-7
-                      top-6
+                      right-5
+                      top-4
                       font-display
-                      text-5xl
+                      text-4xl
                       text-gold/10
                       transition-all
                       duration-500
                       group-hover:scale-110
                       group-hover:text-gold/20
+                      sm:right-7
+                      sm:top-6
+                      sm:text-5xl
                     "
                   >
                     {value.number}
@@ -772,10 +832,11 @@ function AboutPage() {
                   <div className="relative">
                     <p
                       className="
-                        text-[0.6rem]
+                        text-[0.56rem]
                         uppercase
                         tracking-[0.25em]
                         text-gold
+                        sm:text-[0.6rem]
                       "
                     >
                       Principle {value.number}
@@ -783,12 +844,13 @@ function AboutPage() {
 
                     <h3
                       className="
-                        mt-4
+                        mt-3
                         font-display
-                        text-2xl
+                        text-xl
                         transition-colors
                         duration-300
                         group-hover:text-gold
+                        sm:mt-4
                         sm:text-3xl
                       "
                     >
@@ -798,21 +860,25 @@ function AboutPage() {
                     <div
                       className="
                         hairline
-                        mt-5
-                        w-12
+                        mt-4
+                        w-10
                         transition-all
                         duration-500
                         group-hover:w-20
+                        sm:mt-5
+                        sm:w-12
                       "
                     />
 
                     <p
                       className="
-                        mt-5
+                        mt-4
                         max-w-xl
                         text-sm
-                        leading-7
+                        leading-6
                         text-muted-foreground
+                        sm:mt-5
+                        sm:leading-7
                       "
                     >
                       {value.text}
@@ -834,10 +900,11 @@ function AboutPage() {
           group
           relative
           isolate
-          min-h-[620px]
+          min-h-[560px]
           overflow-hidden
           bg-charcoal
-          sm:min-h-[680px]
+          sm:min-h-[620px]
+          lg:min-h-[680px]
         "
       >
         {/* Background */}
@@ -883,13 +950,16 @@ function AboutPage() {
             left-1/2
             top-1/2
             -z-10
-            h-[420px]
-            w-[420px]
+            h-[280px]
+            w-[280px]
             -translate-x-1/2
             -translate-y-1/2
             rounded-full
             bg-gold/10
-            blur-[110px]
+            blur-[90px]
+            sm:h-[420px]
+            sm:w-[420px]
+            sm:blur-[110px]
           "
         />
 
@@ -898,7 +968,7 @@ function AboutPage() {
           className="
             pointer-events-none
             absolute
-            inset-5
+            inset-3
             border
             border-cream/10
             sm:inset-8
@@ -912,40 +982,45 @@ function AboutPage() {
             relative
             mx-auto
             flex
-            min-h-[620px]
+            min-h-[560px]
             max-w-5xl
             items-center
             justify-center
             px-5
-            py-24
+            py-20
             text-center
-            sm:min-h-[680px]
+            sm:min-h-[620px]
             sm:px-8
+            sm:py-24
+            lg:min-h-[680px]
           "
         >
           <Reveal>
             <div className="about-fade-up">
-
               {/* Eyebrow */}
-              <div className="flex items-center justify-center gap-4">
+              <div className="flex items-center justify-center gap-2 sm:gap-4">
                 <span
                   className="
                     h-px
-                    w-12
+                    w-6
                     bg-gold/80
                     transition-all
                     duration-700
-                    group-hover:w-16
+                    group-hover:w-10
+                    sm:w-12
+                    sm:group-hover:w-16
                   "
                 />
 
                 <p
                   className="
-                    text-[0.62rem]
+                    text-[0.52rem]
                     font-medium
                     uppercase
-                    tracking-[0.32em]
+                    tracking-[0.25em]
                     text-gold
+                    sm:text-[0.62rem]
+                    sm:tracking-[0.32em]
                   "
                 >
                   The SAVORA Experience
@@ -954,11 +1029,13 @@ function AboutPage() {
                 <span
                   className="
                     h-px
-                    w-12
+                    w-6
                     bg-gold/80
                     transition-all
                     duration-700
-                    group-hover:w-16
+                    group-hover:w-10
+                    sm:w-12
+                    sm:group-hover:w-16
                   "
                 />
               </div>
@@ -967,12 +1044,13 @@ function AboutPage() {
               <h2
                 className="
                   mx-auto
-                  mt-7
+                  mt-6
                   max-w-4xl
                   font-display
                   text-4xl
                   leading-[1.05]
                   text-cream
+                  sm:mt-7
                   sm:text-6xl
                   lg:text-7xl
                 "
@@ -995,13 +1073,16 @@ function AboutPage() {
               <div
                 className="
                   mx-auto
-                  mt-7
+                  mt-6
                   h-px
-                  w-16
+                  w-12
                   bg-gold
                   transition-all
                   duration-700
-                  group-hover:w-28
+                  group-hover:w-24
+                  sm:mt-7
+                  sm:w-16
+                  sm:group-hover:w-28
                 "
               />
 
@@ -1009,12 +1090,16 @@ function AboutPage() {
               <p
                 className="
                   mx-auto
-                  mt-7
-                  max-w-2xl
+                  mt-6
+                  max-w-xl
+                  px-2
                   text-sm
-                  leading-8
+                  leading-7
                   text-cream/75
+                  sm:mt-7
+                  sm:px-0
                   sm:text-base
+                  sm:leading-8
                 "
               >
                 Come and taste what a season looks like when it
@@ -1022,25 +1107,29 @@ function AboutPage() {
               </p>
 
               {/* Button */}
-              <div className="mt-10 flex justify-center">
+              <div className="mt-8 flex justify-center sm:mt-10">
                 <a
                   href="/reservations"
                   className="
                     about-cta-button
                     inline-flex
                     items-center
-                    gap-3
+                    gap-2.5
                     border
                     border-gold
                     bg-gold
-                    px-7
-                    py-4
-                    text-[0.68rem]
+                    px-6
+                    py-3.5
+                    text-[0.62rem]
                     font-semibold
                     uppercase
-                    tracking-[0.22em]
+                    tracking-[0.18em]
                     text-charcoal
+                    sm:gap-3
                     sm:px-9
+                    sm:py-4
+                    sm:text-[0.68rem]
+                    sm:tracking-[0.22em]
                   "
                 >
                   <span>Reserve a Table</span>
@@ -1054,17 +1143,24 @@ function AboutPage() {
               {/* Details */}
               <div
                 className="
-                  mt-12
+                  mt-9
                   flex
                   flex-wrap
                   items-center
                   justify-center
-                  gap-x-7
-                  gap-y-3
-                  text-[0.58rem]
+                  gap-x-4
+                  gap-y-2
+                  px-4
+                  text-[0.5rem]
                   uppercase
-                  tracking-[0.2em]
+                  tracking-[0.16em]
                   text-cream/50
+                  sm:mt-12
+                  sm:gap-x-7
+                  sm:gap-y-3
+                  sm:px-0
+                  sm:text-[0.58rem]
+                  sm:tracking-[0.2em]
                 "
               >
                 <span>42 Seats</span>
@@ -1088,12 +1184,14 @@ function AboutPage() {
             left-1/2
             top-0
             h-px
-            w-24
+            w-16
             -translate-x-1/2
             bg-gold
             transition-all
             duration-700
-            group-hover:w-40
+            group-hover:w-32
+            sm:w-24
+            sm:group-hover:w-40
           "
         />
 
@@ -1104,12 +1202,14 @@ function AboutPage() {
             bottom-0
             left-1/2
             h-px
-            w-16
+            w-12
             -translate-x-1/2
             bg-gold/50
             transition-all
             duration-700
-            group-hover:w-32
+            group-hover:w-24
+            sm:w-16
+            sm:group-hover:w-32
           "
         />
 
@@ -1117,30 +1217,34 @@ function AboutPage() {
         <div
           className="
             absolute
-            left-8
-            top-8
-            h-8
-            w-8
+            left-5
+            top-5
+            h-6
+            w-6
             border-l
             border-t
             border-gold/50
             sm:left-12
             sm:top-12
+            sm:h-8
+            sm:w-8
           "
         />
 
         <div
           className="
             absolute
-            bottom-8
-            right-8
-            h-8
-            w-8
+            bottom-5
+            right-5
+            h-6
+            w-6
             border-b
             border-r
             border-gold/50
             sm:bottom-12
             sm:right-12
+            sm:h-8
+            sm:w-8
           "
         />
       </section>

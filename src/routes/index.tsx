@@ -1,4 +1,3 @@
-
 import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowLeft,
@@ -180,7 +179,17 @@ function HomePage() {
           HERO SECTION
           ===================================================== */}
 
-      <section className="group relative flex min-h-[94svh] items-center overflow-hidden bg-charcoal">
+      <section
+        className="
+          group
+          relative
+          flex
+          min-h-[100svh]
+          items-center
+          overflow-hidden
+          bg-charcoal
+        "
+      >
 
         <img
           key={heroIndex}
@@ -211,15 +220,17 @@ function HomePage() {
             relative
             mx-auto
             flex
-            min-h-[94svh]
+            min-h-[100svh]
             w-full
             max-w-7xl
             items-center
             justify-center
             px-5
-            py-24
+            pb-36
+            pt-24
             text-center
             sm:px-8
+            sm:py-24
             lg:py-32
           "
         >
@@ -229,25 +240,26 @@ function HomePage() {
             className="mx-auto max-w-4xl"
           >
 
-            <div className="flex items-center justify-center gap-4">
+            <div className="flex items-center justify-center gap-3 sm:gap-4">
 
-              <span className="h-px w-12 bg-gold" />
+              <span className="h-px w-7 bg-gold sm:w-12" />
 
               <p className="eyebrow">
                 {currentHero.eyebrow}
               </p>
 
-              <span className="h-px w-12 bg-gold" />
+              <span className="h-px w-7 bg-gold sm:w-12" />
 
             </div>
 
             <h1
               className="
-                mt-7
+                mt-6
                 font-display
-                text-5xl
-                leading-[0.98]
+                text-4xl
+                leading-[1]
                 text-cream
+                sm:mt-7
                 sm:text-7xl
                 lg:text-[5.8rem]
               "
@@ -262,12 +274,15 @@ function HomePage() {
             <p
               className="
                 mx-auto
-                mt-7
-                max-w-2xl
-                text-sm
-                leading-8
+                mt-6
+                max-w-xl
+                text-xs
+                leading-6
                 text-cream/75
+                sm:mt-7
+                sm:max-w-2xl
                 sm:text-base
+                sm:leading-8
               "
             >
               {currentHero.description}
@@ -275,11 +290,14 @@ function HomePage() {
 
             <div
               className="
-                mt-10
+                mt-8
                 flex
+                w-full
                 flex-col
+                items-center
                 justify-center
                 gap-3
+                sm:mt-10
                 sm:flex-row
               "
             >
@@ -303,23 +321,27 @@ function HomePage() {
 
             <div
               className="
-                mt-12
+                mt-9
                 flex
                 flex-wrap
                 items-center
                 justify-center
-                gap-5
-                text-[0.62rem]
+                gap-3
+                text-[0.58rem]
                 uppercase
-                tracking-[0.25em]
+                tracking-[0.2em]
                 text-cream/55
+                sm:mt-12
+                sm:gap-5
+                sm:text-[0.62rem]
+                sm:tracking-[0.25em]
               "
             >
               {currentHero.keywords.map(
                 (keyword, index) => (
                   <span
                     key={keyword}
-                    className="flex items-center gap-5"
+                    className="flex items-center gap-3 sm:gap-5"
                   >
                     {index > 0 && (
                       <span className="h-1 w-1 rounded-full bg-gold" />
@@ -334,18 +356,24 @@ function HomePage() {
           </Reveal>
         </div>
 
-        {/* HERO CONTROLS */}
+        {/* ===================================================
+            HERO CONTROLS
+            =================================================== */}
 
         <div
           className="
             absolute
-            bottom-8
-            right-5
+            bottom-20
+            left-1/2
             z-20
             flex
+            -translate-x-1/2
             items-center
             gap-3
+            sm:bottom-8
+            sm:left-auto
             sm:right-8
+            sm:translate-x-0
           "
         >
 
@@ -361,8 +389,8 @@ function HomePage() {
             aria-label="Previous hero image"
             className="
               flex
-              h-10
-              w-10
+              h-9
+              w-9
               items-center
               justify-center
               border
@@ -375,6 +403,8 @@ function HomePage() {
               hover:border-gold
               hover:bg-gold
               hover:text-charcoal
+              sm:h-10
+              sm:w-10
             "
           >
             <ArrowLeft size={16} />
@@ -423,8 +453,8 @@ function HomePage() {
             aria-label="Next hero image"
             className="
               flex
-              h-10
-              w-10
+              h-9
+              w-9
               items-center
               justify-center
               border
@@ -437,6 +467,8 @@ function HomePage() {
               hover:border-gold
               hover:bg-gold
               hover:text-charcoal
+              sm:h-10
+              sm:w-10
             "
           >
             <ArrowRight size={16} />
@@ -444,15 +476,19 @@ function HomePage() {
 
         </div>
 
-        {/* DISCOVER */}
+        {/* ===================================================
+            DISCOVER
+            =================================================== */}
 
         <div
           className="
             absolute
             inset-x-0
-            bottom-8
+            bottom-4
+            z-10
             flex
             justify-center
+            sm:bottom-8
           "
         >
 
@@ -461,18 +497,20 @@ function HomePage() {
               flex
               flex-col
               items-center
-              gap-2
-              text-[0.55rem]
+              gap-1
+              text-[0.5rem]
               uppercase
               tracking-[0.3em]
               text-cream/50
+              sm:gap-2
+              sm:text-[0.55rem]
             "
           >
             <span>Discover</span>
 
             <ChevronDown
-              size={20}
-              className="animate-bounce text-gold"
+              size={18}
+              className="animate-bounce text-gold sm:h-5 sm:w-5"
               aria-hidden="true"
             />
           </div>
@@ -485,7 +523,7 @@ function HomePage() {
           INTRO SECTION
           ===================================================== */}
 
-      <section className="relative overflow-hidden py-24 sm:py-32">
+      <section className="relative overflow-hidden py-16 sm:py-32">
 
         <div
           className="
@@ -506,8 +544,9 @@ function HomePage() {
             grid
             max-w-7xl
             items-center
-            gap-14
+            gap-10
             px-5
+            sm:gap-14
             sm:px-8
             lg:grid-cols-[0.9fr_1.1fr]
             lg:gap-20
@@ -536,29 +575,34 @@ function HomePage() {
               <div
                 className="
                   absolute
-                  bottom-5
-                  left-5
+                  bottom-4
+                  left-4
                   border
                   border-cream/30
                   bg-charcoal/80
-                  px-5
-                  py-4
+                  px-4
+                  py-3
                   backdrop-blur-sm
+                  sm:bottom-5
+                  sm:left-5
+                  sm:px-5
+                  sm:py-4
                 "
               >
 
                 <p
                   className="
-                    text-[0.58rem]
+                    text-[0.55rem]
                     uppercase
                     tracking-[0.25em]
                     text-gold
+                    sm:text-[0.58rem]
                   "
                 >
                   Crafted Daily
                 </p>
 
-                <p className="mt-1 font-display text-sm text-cream">
+                <p className="mt-1 font-display text-xs text-cream sm:text-sm">
                   From our kitchen to your table
                 </p>
 
@@ -578,10 +622,11 @@ function HomePage() {
 
             <h2
               className="
-                mt-5
+                mt-4
                 max-w-xl
-                text-4xl
+                text-3xl
                 leading-tight
+                sm:mt-5
                 sm:text-5xl
               "
             >
@@ -591,16 +636,18 @@ function HomePage() {
               </span>
             </h2>
 
-            <div className="hairline mt-7 w-20" />
+            <div className="hairline mt-6 w-20 sm:mt-7" />
 
             <p
               className="
-                mt-7
+                mt-6
                 max-w-xl
-                text-sm
-                leading-8
+                text-xs
+                leading-7
                 text-muted-foreground
+                sm:mt-7
                 sm:text-base
+                sm:leading-8
               "
             >
               SAVORA began with a simple belief — that a
@@ -612,12 +659,14 @@ function HomePage() {
 
             <p
               className="
-                mt-5
+                mt-4
                 max-w-xl
-                text-sm
-                leading-8
+                text-xs
+                leading-7
                 text-muted-foreground
+                sm:mt-5
                 sm:text-base
+                sm:leading-8
               "
             >
               Set in the heart of Koregaon Park, Pune,
@@ -626,7 +675,7 @@ function HomePage() {
               for lingering conversations.
             </p>
 
-            <div className="mt-9">
+            <div className="mt-7 sm:mt-9">
 
               <ButtonLink
                 to="/about"
@@ -652,7 +701,7 @@ function HomePage() {
           relative
           overflow-hidden
           bg-[#f7f4ee]
-          py-24
+          py-16
           sm:py-32
         "
       >
@@ -706,10 +755,12 @@ function HomePage() {
 
           <div
             className="
-              mt-14
+              mt-10
               grid
-              gap-8
+              gap-6
+              sm:mt-14
               sm:grid-cols-2
+              sm:gap-8
               lg:grid-cols-4
             "
           >
@@ -724,7 +775,7 @@ function HomePage() {
 
           </div>
 
-          <div className="mt-14 flex justify-center">
+          <div className="mt-10 flex justify-center sm:mt-14">
 
             <ButtonLink
               to="/menu"
@@ -743,7 +794,7 @@ function HomePage() {
           EXPERIENCE
           ===================================================== */}
 
-      <section className="py-24 sm:py-32">
+      <section className="py-16 sm:py-32">
 
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
 
@@ -758,10 +809,11 @@ function HomePage() {
 
           <div
             className="
-              mt-16
+              mt-10
               grid
               border-y
               border-border
+              sm:mt-16
               sm:grid-cols-2
               lg:grid-cols-4
             "
@@ -776,10 +828,11 @@ function HomePage() {
                   group
                   border-b
                   border-border
-                  p-7
+                  p-5
                   transition-all
                   duration-500
                   hover:bg-secondary/50
+                  sm:p-7
                   sm:nth-[3]:border-b-0
                   lg:border-b-0
                   lg:border-r
@@ -807,16 +860,17 @@ function HomePage() {
 
                 </div>
 
-                <h3 className="mt-8 font-display text-xl">
+                <h3 className="mt-6 font-display text-lg sm:mt-8 sm:text-xl">
                   {p.title}
                 </h3>
 
                 <p
                   className="
                     mt-3
-                    text-sm
+                    text-xs
                     leading-7
                     text-muted-foreground
+                    sm:text-sm
                   "
                 >
                   {p.text}
@@ -834,7 +888,7 @@ function HomePage() {
           CHEF
           ===================================================== */}
 
-      <section className="bg-secondary/60 py-24 sm:py-32">
+      <section className="bg-secondary/60 py-16 sm:py-32">
 
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
 
@@ -849,7 +903,7 @@ function HomePage() {
           TESTIMONIALS
           ===================================================== */}
 
-      <section className="overflow-hidden py-24 sm:py-32">
+      <section className="overflow-hidden py-16 sm:py-32">
 
         <div className="mx-auto max-w-5xl px-5 sm:px-8">
 
@@ -862,7 +916,7 @@ function HomePage() {
             "
           />
 
-          <div className="relative mt-16">
+          <div className="relative mt-10 sm:mt-16">
 
             <div
               key={`${currentTestimonial.name}-${testimonialIndex}`}
@@ -884,11 +938,13 @@ function HomePage() {
             {totalTestimonials > 1 ? (
               <div
                 className="
-                  mt-8
+                  mt-7
                   flex
                   items-center
                   justify-center
-                  gap-4
+                  gap-3
+                  sm:mt-8
+                  sm:gap-4
                 "
               >
 
@@ -898,8 +954,8 @@ function HomePage() {
                   aria-label="Previous testimonial"
                   className="
                     flex
-                    h-11
-                    w-11
+                    h-10
+                    w-10
                     items-center
                     justify-center
                     border
@@ -910,6 +966,8 @@ function HomePage() {
                     hover:border-gold
                     hover:bg-gold
                     hover:text-accent-foreground
+                    sm:h-11
+                    sm:w-11
                   "
                 >
                   <ArrowLeft size={17} />
@@ -954,8 +1012,8 @@ function HomePage() {
                   aria-label="Next testimonial"
                   className="
                     flex
-                    h-11
-                    w-11
+                    h-10
+                    w-10
                     items-center
                     justify-center
                     border
@@ -966,6 +1024,8 @@ function HomePage() {
                     hover:border-gold
                     hover:bg-gold
                     hover:text-accent-foreground
+                    sm:h-11
+                    sm:w-11
                   "
                 >
                   <ArrowRight size={17} />
@@ -977,12 +1037,14 @@ function HomePage() {
             {totalTestimonials > 1 ? (
               <p
                 className="
-                  mt-5
+                  mt-4
                   text-center
-                  text-[0.62rem]
+                  text-[0.58rem]
                   uppercase
                   tracking-[0.2em]
                   text-muted-foreground
+                  sm:mt-5
+                  sm:text-[0.62rem]
                 "
               >
                 {testimonialIndex + 1} /{" "}
@@ -995,52 +1057,130 @@ function HomePage() {
         </div>
       </section>
 
-      ```tsx
-{/* A PLACE TO GATHER */}
-<section className="relative overflow-hidden px-6 py-20 sm:py-28">
-  {/* Background Image */}
-  <img
-    src={images.privateRoom}
-    alt=""
-    aria-hidden="true"
-    loading="lazy"
-    className="absolute inset-0 h-full w-full object-cover object-center"
-  />
+      {/* =====================================================
+          A PLACE TO GATHER
+          ===================================================== */}
 
-  {/* Image Overlay */}
-  <div className="absolute inset-0 bg-black/55" />
+      <section
+        className="
+          relative
+          overflow-hidden
+          px-4
+          py-16
+          sm:px-6
+          sm:py-28
+        "
+      >
 
-  {/* Content */}
-  <div className="relative z-10 mx-auto max-w-4xl">
-    <div className="rounded-3xl border border-white/20 bg-black/30 px-6 py-12 text-center shadow-2xl backdrop-blur-[2px] sm:px-12 sm:py-16">
-      
-      <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#d4b16a]">
-        A PLACE TO GATHER
-      </p>
+        {/* Background Image */}
 
-      <h2 className="font-serif text-4xl font-medium leading-tight text-white sm:text-5xl lg:text-6xl">
-        Good food. Good company.
-        <br />
-        <span className="italic text-[#d4b16a]">
-          Great memories.
-        </span>
-      </h2>
+        <img
+          src={images.privateRoom}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          className="
+            absolute
+            inset-0
+            h-full
+            w-full
+            object-cover
+            object-center
+          "
+        />
 
-      <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-white/80 sm:text-base">
-        Come together over thoughtfully prepared dishes, warm hospitality,
-        and an atmosphere made for meaningful moments.
-      </p>
+        {/* Image Overlay */}
 
-      <div className="mt-8 flex justify-center">
-        <ButtonLink to="/reservations" variant="gold">
-          Reserve a Table
-        </ButtonLink>
-      </div>
+        <div className="absolute inset-0 bg-black/55" />
 
-    </div>
-  </div>
-  </section>
+        {/* Content */}
 
+        <div className="relative z-10 mx-auto max-w-4xl">
+
+          <div
+            className="
+              rounded-3xl
+              border
+              border-white/20
+              bg-black/30
+              px-5
+              py-10
+              text-center
+              shadow-2xl
+              backdrop-blur-[2px]
+              sm:px-12
+              sm:py-16
+            "
+          >
+
+            <p
+              className="
+                mb-4
+                text-[0.65rem]
+                font-semibold
+                uppercase
+                tracking-[0.3em]
+                text-[#d4b16a]
+                sm:text-xs
+              "
+            >
+              A PLACE TO GATHER
+            </p>
+
+            <h2
+              className="
+                font-serif
+                text-3xl
+                font-medium
+                leading-tight
+                text-white
+                sm:text-5xl
+                lg:text-6xl
+              "
+            >
+              Good food. Good company.
+
+              <br />
+
+              <span className="italic text-[#d4b16a]">
+                Great memories.
+              </span>
+            </h2>
+
+            <p
+              className="
+                mx-auto
+                mt-5
+                max-w-2xl
+                text-xs
+                leading-6
+                text-white/80
+                sm:mt-6
+                sm:text-base
+                sm:leading-7
+              "
+            >
+              Come together over thoughtfully prepared dishes,
+              warm hospitality, and an atmosphere made for
+              meaningful moments.
+            </p>
+
+            <div className="mt-7 flex justify-center sm:mt-8">
+
+              <ButtonLink
+                to="/reservations"
+                variant="gold"
+              >
+                Reserve a Table
+              </ButtonLink>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
 
     </Layout>
   );
